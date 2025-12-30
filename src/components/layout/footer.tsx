@@ -22,13 +22,13 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <Mail className="shrink-0 text-[#408ebd]" size={18} />
-              <a href="mailto:nguyenthanhdat19741975@gmail.com" className="hover:text-white transition-colors">
+              <Link href="mailto:nguyenthanhdat19741975@gmail.com" className="hover:text-white transition-colors">
                 nguyenthanhdat19741975@gmail.com
-              </a>
+              </Link>
             </div>
             <div className="flex items-center gap-3">
               <Globe className="shrink-0 text-[#408ebd]" size={18} />
-              <Link href="https://maythoioxydailoan.com" target="_blank" className="hover:text-white transition-colors">
+              <Link href="/" target="_blank" className="hover:text-white transition-colors">
                 maythoioxydailoan.com
               </Link>
             </div>
@@ -39,27 +39,27 @@ export function Footer() {
             </h3>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="/" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Link href="/" className="flex items-center gap-2 hover:text-white transition-colors">
                   <ChevronRight size={16} /> Trang chủ
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/san-pham" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Link href="/san-pham" className="flex items-center gap-2 hover:text-white transition-colors">
                   <ChevronRight size={16} /> Sản phẩm
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/lien-he" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Link href="/lien-he" className="flex items-center gap-2 hover:text-white transition-colors">
                   <ChevronRight size={16} /> Liên hệ báo giá
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="mt-4 p-4 bg-[#408ebd]/10 border border-[#408ebd]/30 rounded-lg">
                <p className="text-xs uppercase font-semibold text-gray-400">Hotline tư vấn 24/7</p>
-               <a href="tel:0938542969" className="flex items-center gap-2 text-2xl font-bold text-white mt-1 hover:text-white transition-colors">
+               <Link href="tel:0938542969" className="flex items-center gap-2 text-2xl font-bold text-white mt-1 hover:text-white transition-colors">
                   <Phone size={24} className="animate-pulse" />
                   0938 542 969
-               </a>
+               </Link>
             </div>
           </div>
           <div className="flex flex-col gap-4">

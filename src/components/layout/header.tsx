@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Search, ShoppingCart, Facebook, Instagram, Phone, Mail } from 'lucide-react';
 import { menuItems } from '@/const';
-
+import Image from 'next/image';
+ 
 export function Header() {
-
 
   return (
     <header className="font-sans">
@@ -51,11 +51,14 @@ export function Header() {
       </section>
       <section className="w-full bg-white py-4 shadow-sm relative z-50">
         <div className="container mx-auto px-4 flex items-center justify-between gap-4">
+
           <Link href="/" className="shrink-0 flex justify-start">
-            <img 
+            <Image 
               src="/favicon.ico" 
               alt="Logo" 
-              className="h-8 w-auto object-contain md:h-10" 
+              width={50} 
+              height={50} 
+              className="object-contain" 
             />
           </Link>
           <nav className="hidden lg:block shrink-0">
