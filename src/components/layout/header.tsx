@@ -7,7 +7,7 @@ export function Header() {
 
   return (
     <header className="font-sans">
-      <section className="w-full bg-[#408ebd] text-white text-[13px] py-2.5">
+      <section className="w-full bg-slate-900 text-white text-[13px] py-2.5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-2">
             <span className="opacity-90">Follow us:</span>
@@ -36,11 +36,15 @@ export function Header() {
           <div className="hidden md:flex items-center gap-6">
              <div className="flex items-center gap-2">
                 <Phone size={16} />
-                <span>0903652738</span>
+                <a href="tel:0938542969" className="flex items-center gap-2 hover:text-white transition-colors">
+                    0938 542 969
+                </a>
              </div>
              <div className="flex items-center gap-2">
                 <Mail size={16} />
-                <span>nguyenthanhdat19741975@gmail.com</span>
+                <a href="mailto:nguyenthanhdat19741975@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                nguyenthanhdat19741975@gmail.com
+              </a>
              </div>
           </div>
         </div>
@@ -58,7 +62,7 @@ export function Header() {
             <ul className="flex items-center gap-6 xl:gap-8 text-gray-600 font-semibold text-[15px]">
               {menuItems.map((item, index) => (
                 <li key={item.name}>
-                  <Link href={item.link} className="hover:text-[#408ebd] transition-colors whitespace-nowrap">
+                  <Link href={item.link} className="hover:text-gray-900 transition-colors whitespace-nowrap">
                     {item.name}
                   </Link>
                 </li>
@@ -70,16 +74,14 @@ export function Header() {
                 <input 
                     type="text" 
                     placeholder="Bạn cần tìm gì?" 
-                    className="w-full pl-5 pr-10 py-2.5 rounded-full border border-gray-200 outline-none focus:border-[#408ebd] focus:ring-1 focus:ring-[#408ebd] text-sm text-gray-700 bg-gray-50 focus:bg-white transition-all"
+                    className="w-full pl-5 pr-10 py-2.5 rounded-full border border-gray-200 outline-none focus:border-gray-600 focus:ring-1 focus:ring-gray-600 text-sm text-gray-700 bg-gray-50 focus:bg-white transition-all"
                 />
-                <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer hover:text-[#408ebd]" size={20} />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer hover:text-gray-600" size={20} />
             </div>
-            <div className="hidden md:flex items-center gap-2 border border-gray-200 rounded-full px-5 py-2.5 hover:border-[#408ebd] hover:text-[#408ebd] transition-colors relative group shrink-0">
+            <div className="hidden md:flex items-center gap-2 border border-gray-200 rounded-full px-5 py-2.5 hover:border-gray-900 transition-colors relative group shrink-0">
                 <ShoppingCart size={20} />
                 <span className="font-semibold text-sm">Giỏ hàng</span>
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white">
-                    0
-                </span>
+
             </div>
           </section>
         </div>
