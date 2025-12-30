@@ -1,14 +1,39 @@
+"use client"; 
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Home, LayoutGrid, Newspaper, Phone } from 'lucide-react';
+import { menuItems } from '@/const';
+import { title } from 'process';
+
 export function MobileNav() { 
+    const pathname = usePathname();
+    const icons = [Home, LayoutGrid, Newspaper, Phone];
     return (
-        <nav className="sticky bottom-0 bg-white shadow-t-md border-t md:hidden">
-            <div className="flex justify-between items-center p-4">
-                <h2 className="text-xl font-bold">Menu</h2>
-                <button className="text-gray-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
-            </div>
+        <nav className="sticky bottom-0 left-0 z-50 w-full bg-white border-t border-gray-200 md:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe">
+            <ul className="flex justify-around items-center h-16">
+                {menuItems.map((item, index) => {
+                    const Icon = icons[index] || Home; 
+                    const isActive = pathname === item.link;
+                    return (
+                        <li  key={title} >
+                        <Link 
+                            href={item.link}
+                            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+                                isActive 
+                                    ? 'text-[#408ebd] font-semibold' 
+                                    : 'text-gray-500 hover:text-[#408ebd]' 
+                            }`}
+                        >
+                            <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+                            <span className="text-[10px] mt-1 leading-none">
+                                {item.name}
+                            </span>
+                        </Link>
+                        </li>
+                    );
+                })}
+            </ul>
         </nav>
-    )
+    );
 }
