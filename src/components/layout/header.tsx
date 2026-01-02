@@ -59,7 +59,7 @@ export function Header() {
           <nav className="hidden lg:block shrink-0">
             <ul className="flex items-center gap-6 xl:gap-8 text-gray-600 font-semibold text-[15px]">
               {menuItems.map((item, index) => (
-                <li key={item.name}>
+                <li key={'header-menu-item' + index}>
                   <Link href={item.link} className="hover:text-[#408ebd] transition-colors whitespace-nowrap">
                     {item.name}
                   </Link>
