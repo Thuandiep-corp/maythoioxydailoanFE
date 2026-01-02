@@ -89,7 +89,7 @@ export function Document() {
             ))}
           </div>
           <div className="mt-6 sm:hidden">
-            <Link href="/tin-tuc/tai-lieu">
+            <Link href="/tin-tuc">
                 <button className="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-white text-gray-900 text-sm font-bold border border-gray-200 hover:bg-gray-50 transition-colors">
                 Xem kho tài liệu
                 </button>
