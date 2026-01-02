@@ -7,7 +7,7 @@ export function Header() {
 
 
   return (
-    <header className="font-sans">
+    <header className="font-sans w-full">
       <section className="w-full bg-[#408ebd] text-white text-[13px] py-2.5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-2">
