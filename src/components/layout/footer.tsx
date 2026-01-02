@@ -16,9 +16,9 @@ export function Footer() {
             </p>
             <div className="flex items-start gap-3">
               <MapPin className="shrink-0 text-[#408ebd] mt-1" size={18} />
-              <span className="leading-relaxed">
+              <Link href='https://maps.app.goo.gl/kLt7PksZQDgrd4ab6' className="hover:text-white transition-colors">
                 995 Quốc Lộ 1A, Phường Bình Hưng Hòa, Quận Bình Tân, TP. Hồ Chí Minh
-              </span>
+              </Link>
             </div>
             <div className="flex items-center gap-3">
               <Mail className="shrink-0 text-[#408ebd]" size={18} />
