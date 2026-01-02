@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, Globe, Facebook, ChevronRight } from 'lucide-react
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300 text-sm mt-auto">
+    <footer className="bg-slate-900 text-slate-300 text-sm mt-auto w-full">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="flex flex-col gap-4">
@@ -16,9 +16,9 @@ export function Footer() {
             </p>
             <div className="flex items-start gap-3">
               <MapPin className="shrink-0 text-[#408ebd] mt-1" size={18} />
-              <span className="leading-relaxed">
+              <Link href='https://maps.app.goo.gl/kLt7PksZQDgrd4ab6' className="hover:text-white transition-colors">
                 995 Quốc Lộ 1A, Phường Bình Hưng Hòa, Quận Bình Tân, TP. Hồ Chí Minh
-              </span>
+              </Link>
             </div>
             <div className="flex items-center gap-3">
               <Mail className="shrink-0 text-[#408ebd]" size={18} />
