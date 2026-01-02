@@ -1,4 +1,4 @@
-import ProductCard from "@/components/commons/product-card";
+import { ProductCard } from "@/components";
 import { productList } from "@/moocs/catalog";
 
 export default function Page() {

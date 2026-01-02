@@ -6,7 +6,7 @@ type Props = {
     data: Record<string, any>
 }
 
-export default function ProductCard({ data }:Props) {
+export function ProductCard({ data }:Props) {
     return (
         <section className="flex flex-col gap-2 bg-white rounded-lg shadow-md p-4">
             <Image src={data.image} alt={data.name} width={200} height={200} className="w-full aspect-square" />
