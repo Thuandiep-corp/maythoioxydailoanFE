@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, Globe, Facebook, ChevronRight } from 'lucide-react
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300 text-sm mt-auto">
+    <footer className="bg-slate-900 text-slate-300 text-sm mt-auto w-full">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="flex flex-col gap-4">
