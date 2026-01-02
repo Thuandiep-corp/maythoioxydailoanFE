@@ -1,35 +1,21 @@
-import Link from "next/link";
+import React from 'react';
+import { ProductList } from '@/components/homepage/product-list';
 
-export default function Page() {
+export default function HomePage() {
+
   return (
-    <article className="flex flex-col items-center justify-center min-h-screen flex-1 bg-linear-to-br from-blue-50 to-blue-100 p-6">
-      <div className="bg-white shadow-2xl rounded-3xl p-10 max-w-3xl w-full flex flex-col items-center border border-blue-100">
-        <img
-          src="/thuandiep-logo.png"
-          alt="Thuandiep Corp Logo"
-          className="w-24 h-24 mb-6 rounded-full shadow-lg border-4 border-blue-200 object-cover bg-white"
-        />
-        <h1 className="text-4xl font-extrabold mb-4 text-blue-800 tracking-tight drop-shadow-lg">
-          Welcome to Thuandiep Corp
-        </h1>
-        <p className="text-xl text-gray-700 mb-4 font-medium">
-          Leading the way in digital innovation and technology solutions.
-        </p>
-        <div className="text-base text-gray-600 mb-6">
-          <p className="mb-2">
-            Thuandiep Corp is a technology company dedicated to delivering innovative solutions and digital transformation services. Our mission is to empower businesses with cutting-edge technology, drive growth, and create value through excellence in software development, cloud computing, and IT consulting.
-          </p>
-          <p>
-            With a passionate team of experts and a commitment to quality, Thuandiep Corp partners with clients worldwide to build the future of technology.
-          </p>
+    <div className="bg-gray-50 min-h-screen pb-10">
+      <section className="w-full">
+        <div className="w-full h-[200px] md:h-[400px] bg-gradient-to-r from-[#408ebd] to-[#2b6cb0] flex items-center justify-center text-white">
+          <div className="text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-2">BANNER QUẢNG CÁO</h2>
+            <p className="opacity-80">Hình ảnh và nội dung khuyến mãi sẽ được đặt tại đây</p>
+          </div>
         </div>
-        <Link
-          href="#"
-          className="inline-block px-8 py-3 bg-blue-700 text-white font-semibold rounded-full shadow-md hover:bg-blue-800 transition-colors duration-200"
-        >
-          Learn More
-        </Link>
+      </section>
+      <div className="container mx-auto px-4 mt-8">
+         <ProductList />
       </div>
-    </article>
+    </div>
   );
 }
