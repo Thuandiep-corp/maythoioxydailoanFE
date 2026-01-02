@@ -4,6 +4,11 @@ import { ReactNode } from "react";
 import { Footer, Header, MobileNav } from "@/components";
 
 import "./globals.css";
+<<<<<<< HEAD
+=======
+import { ReactNode } from "react";
+import { Footer, Header, MobileNav } from "@/components";
+>>>>>>> origin/main
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -35,7 +40,11 @@ export default function RootLayout({
         className={`${roboto.className} antialiased flex flex-col items-center`}
       >
         <Header />
+<<<<<<< HEAD
         <main className="min-h-screen px-8 w-full max-w-360 ">
+=======
+        <main className="w-full min-h-screen px-8">
+>>>>>>> origin/main
           {children}
         </main>
         <Footer />
