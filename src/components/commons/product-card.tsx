@@ -10,7 +10,7 @@ type Props = {
 export function ProductCard({ data }:Props) {
     return (
         <section className="flex flex-col gap-2 bg-white rounded-lg shadow-md p-4 hover:[&>img]:-top-2.5 cursor-pointer">
-            <Link href={`/san-pham/${data.category}/${data.slug}`} className="overflow-hidden rounded-lg mb-2 block relative">
+            <Link href={`/catalog/${data.category}/${data.slug}`} className="overflow-hidden rounded-lg mb-2 block relative">
                 <Image src={data.image} alt={data.name} width={200} height={200} className="relative top-0 transition-all w-full aspect-square rounded" />
             </Link>
             <h3 className="text-lg font-medium">{data.name}</h3>

@@ -1,1 +1,1 @@
-export * from "./product-list";
+export * from "./category-signature";
