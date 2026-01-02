@@ -8,7 +8,7 @@ export function Header() {
 
   return (
     <header className="font-sans">
-      <section className="w-full bg-[#408ebd] text-white text-[13px] py-2.5">
+      <section className="w-full bg-slate-900 text-white text-[13px] py-2.5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-2">
             <span className="opacity-90">Follow us:</span>
@@ -59,7 +59,7 @@ export function Header() {
           <nav className="hidden lg:block shrink-0">
             <ul className="flex items-center gap-6 xl:gap-8 text-gray-600 font-semibold text-[15px]">
               {menuItems.map((item, index) => (
-                <li key={item.name}>
+                <li key={'header-menu-item'+index}>
                   <Link href={item.link} className="hover:text-[#408ebd] transition-colors whitespace-nowrap">
                     {item.name}
                   </Link>

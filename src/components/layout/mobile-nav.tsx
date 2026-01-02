@@ -16,7 +16,7 @@ export function MobileNav() {
                     const Icon = icons[index] || Home; 
                     const isActive = pathname === item.link;
                     return (
-                        <li  key={title} >
+                        <li  key={'mobile-menu-item'+index} >
                         <Link 
                             href={item.link}
                             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
