@@ -10,6 +10,8 @@ export const productList = [
         id: 2,
         name: "Sản phẩm 2",
         image: "/logo.png",
+        slug: "san-pham-2",
+        category: "danh-muc-1",
         description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 150000
     },
@@ -17,6 +19,8 @@ export const productList = [
         id: 3,
         name: "Sản phẩm 3",
         image: "/logo.png",
+        slug: "san-pham-3",
+        category: "danh-muc-1",
         description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 200000
     },
@@ -24,6 +28,8 @@ export const productList = [
         id: 4,
         name: "Sản phẩm 4",
         image: "/logo.png",
+        slug: "san-pham-4",
+        category: "danh-muc-1",
         description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 250000
     },
@@ -31,6 +37,8 @@ export const productList = [
         id: 2,
         name: "Sản phẩm 2",
         image: "/logo.png",
+        slug: "san-pham-2",
+        category: "danh-muc-1",
         description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 150000
     },
@@ -38,6 +46,8 @@ export const productList = [
         id: 3,
         name: "Sản phẩm 3",
         image: "/logo.png",
+        slug: "san-pham-3",
+        category: "danh-muc-1",
         description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 200000
     },
@@ -45,6 +55,8 @@ export const productList = [
         id: 4,
         name: "Sản phẩm 4",
         image: "/logo.png",
+        slug: "san-pham-4",
+        category: "danh-muc-1",
         description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 250000
     },
@@ -52,6 +64,8 @@ export const productList = [
         id: 2,
         name: "Sản phẩm 2",
         image: "/logo.png",
+        slug: "san-pham-2",
+        category: "danh-muc-1", 
         description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 150000
     },
