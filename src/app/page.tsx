@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 export default function Page() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen flex-1 bg-linear-to-br from-blue-50 to-blue-100 p-6">
+    <article className="flex flex-col items-center justify-center min-h-screen flex-1 bg-linear-to-br from-blue-50 to-blue-100 p-6">
       <div className="bg-white shadow-2xl rounded-3xl p-10 max-w-3xl w-full flex flex-col items-center border border-blue-100">
         <img
           src="/thuandiep-logo.png"
@@ -21,14 +23,13 @@ export default function Page() {
             With a passionate team of experts and a commitment to quality, Thuandiep Corp partners with clients worldwide to build the future of technology.
           </p>
         </div>
-        <a
+        <Link
           href="#"
           className="inline-block px-8 py-3 bg-blue-700 text-white font-semibold rounded-full shadow-md hover:bg-blue-800 transition-colors duration-200"
         >
           Learn More
-        </a>
+        </Link>
       </div>
-      
-    </main>
+    </article>
   );
 }
