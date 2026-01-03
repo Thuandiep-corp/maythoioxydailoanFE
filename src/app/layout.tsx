@@ -35,7 +35,7 @@ export default function RootLayout({
         className={`${roboto.className} antialiased flex flex-col items-center`}
       >
         <Header />
-        <main className="min-h-screen px-8 w-full max-w-360 ">
+        <main className="min-h-screen w-full">
           {children}
         </main>
         <Footer />
