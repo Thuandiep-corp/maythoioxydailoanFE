@@ -13,7 +13,7 @@ export function Categories() {
               <Link href={`/catalog/${cat.slug}`}
                 key={i}
                 className="flex flex-col items-center gap-4 rounded-md border border-slate-100 bg-white p-8 transition-all hover:shadow-lg hover:-translate-y-1"
-              > <Image src={cat.img} alt={cat.slug} width={100} height={100} className="aspect-square max-w-25"></Image>
+              > <Image src={cat.img} alt={cat.slug} width={80} height={60} className="aspect-video max-w-25"></Image>
                 <p className="text-sm font-semibold text-slate-700 line-clamp-1">{cat.title}</p>
               </Link>
             ))}
