@@ -1,3 +1,7 @@
-export default function Page() {
-    return <article>Bài Viết page</article>;
+import { NewsList } from '@/components/news/news-list';
+
+export default function BaiVietPage() {
+  return (
+    <NewsList showViewAll={false} />
+  );
 }

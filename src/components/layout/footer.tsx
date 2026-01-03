@@ -1,6 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
-import { MapPin, Phone, Mail, Globe, Facebook, ChevronRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, ChevronRight } from 'lucide-react';
 
 export function Footer() {
   return (

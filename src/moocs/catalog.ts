@@ -2,6 +2,8 @@ export const productList = [
     {
         id: 1,
         name: "Sản phẩm 1",
+        slug: "san-pham-1",
+        category: "danh-muc-1",
         image: "/logo.png",
         description: "simply dummy text of the printing and typese tting industry. Lorem Ipsum has been simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
         price: 100000
