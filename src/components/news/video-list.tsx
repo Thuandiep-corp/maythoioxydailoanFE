@@ -12,13 +12,13 @@ export function VideoList({ limit, showViewAll = true }: VideoListProps) {
   const displayItems = limit ? videos.slice(0, limit) : videos;
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-slate-50 py-16">
+      <div className="container mx-auto px-4 lg:px-8 text-center">     
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
             <MonitorPlay className="text-[#408ebd]" size={28} />
             Video & Hướng dẫn
-          </h2>
+          </h2>        
           {showViewAll ? (
             <Link 
               href="/tin-tuc/video" 
@@ -26,7 +26,8 @@ export function VideoList({ limit, showViewAll = true }: VideoListProps) {
             >
               Xem tất cả video <ArrowRight size={18} />
             </Link>
-          ) : (<Link 
+          ) : (
+            <Link 
               href="/tin-tuc" 
               className="flex items-center gap-1 text-sm font-semibold text-gray-500 hover:text-[#408ebd] transition-colors"
             >
@@ -34,7 +35,7 @@ export function VideoList({ limit, showViewAll = true }: VideoListProps) {
             </Link>
           )}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
           {displayItems.map((video, index) => {
             const thumbnail = `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
             const videoLink = `https://www.youtube.com/watch?v=${video.videoId}`;
