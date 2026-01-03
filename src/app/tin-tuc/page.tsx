@@ -19,8 +19,8 @@ export default function TinTucPage() {
           </div>
       </div>
 
-      <NewsList limit={3} />
-      <DocumentList limit={2} />
+      <NewsList limit={2} />
+      <DocumentList limit={3} />
       <VideoList limit={3} />
     </div>
   );

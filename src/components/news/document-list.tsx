@@ -1,92 +1,77 @@
-import React from 'react';
 import Link from 'next/link';
-import { FileText, ArrowRight, FileType, Table, Download } from 'lucide-react';
+import { FileText, ArrowRight, Eye, Calendar, ArrowLeft } from 'lucide-react';
+import { documents } from '@/moocs/document';
 
 interface DocumentListProps {
   limit?: number;
   showViewAll?: boolean;
 }
-export function DocumentList({ limit, showViewAll = true }: DocumentListProps) {
 
-  const documents = [
-    {
-      title: "Catalogue Tổng hợp 2024",
-      desc: "Danh sách đầy đủ các sản phẩm và phụ kiện cơ khí.",
-      type: "PDF",
-      size: "4.5 MB",
-      icon: <FileText size={32} className="text-red-500" />,
-      bg: "bg-red-50"
-    },
-    {
-      title: "Hướng dẫn vận hành Máy Tiện CNC",
-      desc: "Quy trình an toàn và bảo dưỡng định kỳ.",
-      type: "DOCX",
-      size: "2.1 MB",
-      icon: <FileType size={32} className="text-blue-500" />,
-      bg: "bg-blue-50"
-    },
-    {
-      title: "Thông số kỹ thuật Thép S45C",
-      desc: "Bảng tra cứu độ cứng và thành phần hóa học.",
-      type: "PDF",
-      size: "1.2 MB",
-      icon: <FileText size={32} className="text-red-500" />,
-      bg: "bg-red-50"
-    },
-    {
-      title: "Báo giá Vật tư Tháng 10",
-      desc: "Cập nhật giá thép tấm, thép hình và phụ kiện.",
-      type: "XLS",
-      size: "850 KB",
-      icon: <Table size={32} className="text-green-600" />,
-      bg: "bg-green-50"
-    }
-  ];
+export function DocumentList({ limit, showViewAll = true }: DocumentListProps) {
 
   const displayItems = limit ? documents.slice(0, limit) : documents;
 
   return (
     <section className="py-16 bg-gray-50 border-y border-gray-200">
       <div className="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8">
+        
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
             <FileText className="text-[#408ebd]" size={28} />
             Tài liệu kỹ thuật
           </h2>
-          {showViewAll && (
+          {showViewAll ? (
             <Link 
               href="/tin-tuc/tai-lieu" 
               className="hidden sm:flex items-center gap-1 text-sm font-semibold text-[#408ebd] hover:opacity-80 transition-colors"
             >
               Xem kho tài liệu <ArrowRight size={18} />
             </Link>
+          ) : (
+            <Link 
+              href="/tin-tuc" 
+              className="flex items-center gap-1 text-sm font-semibold text-gray-500 hover:text-[#408ebd] transition-colors"
+            >
+              <ArrowLeft size={18} /> Trở về trang Tin tức
+            </Link>
           )}
         </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {displayItems.map((doc, index) => (
-            <div key={index} className="group bg-white p-5 rounded-xl border border-gray-200 hover:shadow-md hover:border-[#408ebd]/30 transition-all cursor-pointer flex items-start gap-4">
-              <div className={`w-12 h-12 rounded-lg ${doc.bg} flex items-center justify-center flex-shrink-0`}>
-                {doc.icon}
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-base font-bold text-gray-900 truncate group-hover:text-[#408ebd] transition-colors">
-                  {doc.title}
-                </h3>
-                <p className="text-sm text-gray-500 mt-1 mb-3 line-clamp-1">
+            <article key={index} className="group flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-200">
+              <Link href={doc.link} target="_blank" className="relative aspect-[4/3] w-full overflow-hidden block">
+                <img 
+                  alt={doc.title} 
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out" 
+                  src={doc.image}
+                />
+              </Link>
+              <div className="p-4 flex flex-col flex-1">
+                <div className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                  <Calendar size={14} /> {doc.date}
+                </div>
+                <Link href={doc.link} target="_blank" className="block">
+                    <h3 className="text-lg font-bold text-gray-900 leading-snug mb-2 group-hover:text-[#408ebd] transition-colors line-clamp-2">
+                    {doc.title}
+                    </h3>
+                </Link>
+                <p className="text-sm text-gray-500 line-clamp-3 mb-4 flex-1">
                   {doc.desc}
                 </p>
-                <div className="flex items-center gap-4 text-xs font-medium text-gray-500">
-                  <span className="bg-gray-100 px-2 py-0.5 rounded text-gray-600">{doc.type}</span>
-                  <span>{doc.size}</span>
-                  <span className="ml-auto flex items-center text-[#408ebd] group-hover:underline">
-                    Tải về <Download size={16} className="ml-1" />
-                  </span>
+                <div className="pt-4 border-t border-gray-100 flex items-center justify-end">
+                    <Link 
+                        href={doc.link} 
+                        target="_blank"
+                        className="text-sm font-semibold text-[#408ebd] flex items-center gap-1 hover:underline"
+                    >
+                        Đọc tài liệu <Eye size={16} />
+                    </Link>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
+
       </div>
     </section>
   );
