@@ -1,8 +1,7 @@
-"use client";
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import { productList } from '@/moocs/catalog';
-import { ProductCard } from '@/components/commons/product-card';
+import { ProductCard } from '@/components/catalog/product-card';
 type Props = {
   cat: Record<string, any>;
 }

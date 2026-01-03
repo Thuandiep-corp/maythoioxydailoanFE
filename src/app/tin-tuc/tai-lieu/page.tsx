@@ -1,3 +1,7 @@
-export default function Page() {
-    return <article>Tài Liệu page</article>;
+import { DocumentList } from '@/components/news/document-list';
+
+export default function TaiLieuPage() {
+  return (
+    <DocumentList showViewAll={false} />
+  );
 }
