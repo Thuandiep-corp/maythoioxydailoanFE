@@ -12,7 +12,7 @@ export function BestSeller() {
             </div>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {productList.slice(0, 12).map((prod, i) => (
+            {productList.slice(0, 8).map((prod, i) => (
               <ProductCard key={i} data={prod} />
             ))}
           </div>
