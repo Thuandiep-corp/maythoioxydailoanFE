@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link"
 import { ArrowRight, Phone, Share2, CheckCircle2 } from "lucide-react"
 
@@ -6,10 +8,6 @@ type Props = {
 }
 
 export function ProductInfo({ product }: Props) {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
-  };
-
   return (
     <div className="flex flex-col h-full">
       <div className="mb-6">
@@ -56,10 +54,23 @@ export function ProductInfo({ product }: Props) {
               Hotline: 0903 123 456
             </Link>
             <span className="text-slate-300">|</span>
-            <button className="flex items-center gap-2 text-slate-500 hover:text-[#408ebd] transition-colors text-sm font-medium">
+            <div
+              className="flex items-center gap-2 text-slate-500 hover:text-[#408ebd] transition-colors text-sm font-medium"
+              onClick={() => {
+                if (typeof window !== "undefined" && navigator.share) {
+                  navigator.share({
+                    title: document.title,
+                    text: product?.name || "Xem sản phẩm này",
+                    url: window.location.href
+                  });
+                } else {
+                  alert("Trình duyệt của bạn không hỗ trợ chức năng chia sẻ trực tiếp.");
+                }
+              }}
+            >
               <Share2 size={18} />
               Chia sẻ
-            </button>
+            </div>
           </div>
         </div>
         <div className="pt-6 border-t border-slate-100">

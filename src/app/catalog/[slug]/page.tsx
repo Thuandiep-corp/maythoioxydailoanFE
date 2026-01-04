@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { productList } from '@/moocs/catalog';
-import { ProductGallery } from '@/components/catalog/product-gallery';
-import { ProductInfo } from '@/components/catalog/product-info';
-import { RelatedProducts } from '@/components/catalog/related-products';
+import { ProductCard, ProductGallery, ProductInfo } from '@/components';
+import { ArrowRight } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{
@@ -15,7 +14,7 @@ export default async function ProductDetailPage(props: PageProps) {
   const params = await props.params;
   const { category, slug } = params;
 
-  const product = productList.find((p) => p.slug === slug);
+  const product = productList.find((p) => p.slug === slug) ?? productList[0];
 
   if (!product) {
     return (
@@ -45,15 +44,11 @@ export default async function ProductDetailPage(props: PageProps) {
             Trang chủ
           </Link>
           <span className="text-gray-400">/</span>
-          <Link className="text-gray-500 hover:text-[#408ebd] transition-colors" href="/san-pham">
+          <Link className="text-gray-500 hover:text-[#408ebd] transition-colors" href="/catalog">
             Sản phẩm
           </Link>
           <span className="text-gray-400">/</span>
-          <Link className="text-gray-500 hover:text-[#408ebd] transition-colors capitalize" href={`/catalog/${category}`}>
-             {category}
-          </Link>
-          <span className="text-gray-400">/</span>
-          <span className="text-[#408ebd] truncate max-w-[200px] sm:max-w-none font-semibold">
+          <span className="text-[#408ebd] truncate max-w-50 sm:max-w-none font-semibold">
             {product.name}
           </span>
         </section>
@@ -66,13 +61,21 @@ export default async function ProductDetailPage(props: PageProps) {
                <ProductInfo product={product} />
             </div>
         </section>
-
-        <RelatedProducts 
-            currentProductId={product.id}
-            category={product.category}
-            allProducts={productList}
-        />
-
+      <section className="mt-16 pt-16 border-t border-slate-200">
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="text-2xl font-bold text-slate-900">Sản phẩm tương tự</h2>
+        <Link href={`/catalog`} className="text-sm font-medium text-[#408ebd] hover:underline flex items-center gap-1">
+          Xem tất cả <ArrowRight size={16} />
+        </Link>
+      </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            { 
+              productList
+                .slice(0, 4)
+                .map((item, index) => <ProductCard key={'related-product-'+ item.id + '-' + index} data={item} />)
+            }
+      </div>
+    </section>
       </div>
     </article>
   );
