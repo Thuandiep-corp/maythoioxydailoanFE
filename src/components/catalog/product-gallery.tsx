@@ -13,7 +13,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
   
   return (
     <div className="flex flex-col gap-4">
-      <div className="aspect-[4/3] bg-white rounded-2xl border border-slate-100 overflow-hidden relative group">
+      <div className="aspect-4/3 bg-white rounded-2xl border border-slate-100 overflow-hidden relative group">
         <div
           className="w-full h-full bg-center bg-cover bg-no-repeat transition-all duration-500"
           style={{ backgroundImage: `url('${safeImages[selectedImage]}')` }}

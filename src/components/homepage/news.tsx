@@ -44,7 +44,8 @@ export function News() {
                     <section>
                         <h2 className="mb-8 text-2xl font-bold text-slate-900">Video Nổi bật</h2>
                         <div className="group relative aspect-video w-full overflow-hidden rounded-lg">
-                            <iframe width="580" height="327" src="https://www.youtube.com/embed/b4JxtKSNpBY?si=-Efe9_rrRA3XRIt6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-full h-full"/>
+                            <iframe width="580" height="327" loading="lazy" src="https://www.youtube-nocookie.com/embed/b4JxtKSNpBY?rel=0"
+                                title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-full h-full" />
                         </div>
                     </section>
                 </section>

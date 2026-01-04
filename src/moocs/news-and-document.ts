@@ -6,7 +6,7 @@ export const documentList = [
         date: "20/12/2023",
         excerpt:
             "Bài viết chi tiết về quy trình thiết lập tọa độ, thay dao tự động và các mã lệnh G-code cơ bản cho người mới bắt đầu...",
-        img: '/news/1537462715879-360eeb61a0ad.avif'
+        img: '/news/1537462715879-360eeb61a0ad.jpg'
     },
     {
         title: "Phân tích thông số kỹ thuật hệ thống bơm cao áp Pentax",

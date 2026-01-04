@@ -53,7 +53,7 @@ export function Header() {
               src="/favicon.ico" 
               alt="Logo"
               width={50}
-              height={50}
+              height={29}
             />  
           </Link>
           <nav className="hidden lg:block shrink-0">
@@ -76,12 +76,13 @@ export function Header() {
                 />
                 <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer hover:text-[#408ebd]" size={20} />
             </div>
-            <div className="hidden md:flex items-center gap-2 border border-gray-200 rounded-full px-5 py-2.5 hover:border-[#408ebd] hover:text-[#408ebd] transition-colors relative group shrink-0">
+            <div className="flex items-center gap-2 border border-gray-200 rounded-full px-5 py-2.5 hover:border-[#408ebd] hover:text-[#408ebd] transition-colors relative group shrink-0">
                 <ShoppingCart size={20} />
-                <span className="font-semibold text-sm">Giỏ hàng</span>
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white">
+                
+                <p className="hidden md:inline font-semibold text-sm">Giỏ hàng</p>
+                <p className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white">
                     0
-                </span>
+                </p>
             </div>
           </section>
         </div>

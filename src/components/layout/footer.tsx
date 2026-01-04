@@ -83,7 +83,7 @@ export function Footer() {
       </div>
       <div className="bg-slate-950 py-4 border-t border-slate-800">
         <div className="container mx-auto px-4 text-center text-xs text-slate-500">
-           © {new Date().getFullYear()} Máy thổi khí Thành Đạt. All rights reserved. Designed by Thuan Diep Corp.
+           © 2025 Máy thổi khí Thành Đạt. All rights reserved. Developed by Thuan Diep Corp.
         </div>
       </div>
     </footer>

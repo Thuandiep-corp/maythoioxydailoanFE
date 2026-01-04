@@ -37,30 +37,15 @@ export function VideoList({ limit, showViewAll = true }: VideoListProps) {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
           {displayItems.map((video, index) => {
-            const thumbnail = `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
-            const videoLink = `https://www.youtube.com/watch?v=${video.videoId}`;
-
             return (
-              <div key={index} className="group cursor-pointer">
-                <Link href={videoLink} target="_blank" className="relative aspect-video rounded-xl overflow-hidden bg-black border border-gray-200 mb-3 block">
-                  <img 
-                    src={thumbnail} 
-                    alt={video.title} 
-                    className="w-full h-full object-cover opacity-90 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500" 
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-[#408ebd] group-hover:scale-110 transition-all duration-300">
-                      <Play className="text-white ml-1" size={24} fill="currentColor" />
-                    </div>
-                  </div>
-                  <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs font-medium px-2 py-0.5 rounded">
-                    {video.duration}
-                  </span>
-                </Link>
-                <h3 className="text-sm font-bold text-gray-900 leading-tight group-hover:text-[#408ebd] transition-colors line-clamp-2 min-h-10">
-                  <Link href={videoLink} target="_blank">
+              <div key={'video-list-youtube-item-'+index} className="group cursor-pointer">
+                <div className="relative aspect-video rounded-xl overflow-hidden mb-3">
+                  <iframe width="580" height="327" loading="lazy" src={ video.url}
+                                title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-full h-full" />
+
+                </div>
+                <h3 className="text-sm font-bold text-gray-900 leading-tight group-hover:text-[#408ebd] transition-colors line-clamp-2">
                     {video.title}
-                  </Link>
                 </h3>
                 <p className="text-xs text-gray-500 mt-2 line-clamp-2">
                   {video.desc}
