@@ -17,17 +17,16 @@ export function BestSeller() {
 
            {/* Nút Xem tất cả (Desktop) */}
            <Link 
-             href="/san-pham" 
+             href="/catalog" 
              className="hidden sm:flex items-center gap-1 text-sm font-semibold text-[#408ebd] hover:opacity-80 transition-colors mb-1"
            >
              Xem tất cả sản phẩm <ArrowRight size={18} />
            </Link>
          </div>
 
-         {/* GRID: Giới hạn 4 sản phẩm */}
          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
            {/* Sửa slice(0, 12) thành slice(0, 4) */}
-           {productList.slice(0, 4).map((prod, i) => (
+           {productList.slice(0, 8).map((prod, i) => (
              <ProductCard key={i} data={prod} />
            ))}
          </div>

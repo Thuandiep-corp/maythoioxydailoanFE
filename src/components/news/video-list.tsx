@@ -57,7 +57,7 @@ export function VideoList({ limit, showViewAll = true }: VideoListProps) {
                     {video.duration}
                   </span>
                 </Link>
-                <h3 className="text-sm font-bold text-gray-900 leading-tight group-hover:text-[#408ebd] transition-colors line-clamp-2 min-h-[40px]">
+                <h3 className="text-sm font-bold text-gray-900 leading-tight group-hover:text-[#408ebd] transition-colors line-clamp-2 min-h-10">
                   <Link href={videoLink} target="_blank">
                     {video.title}
                   </Link>

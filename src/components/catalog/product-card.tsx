@@ -9,14 +9,14 @@ type Props = {
 export function ProductCard({ data }:Props) {
     return (
         <section className="flex flex-col gap-2 bg-white rounded-lg shadow-md p-4 hover:shadow-lg group">
-            <Link href={`/catalog/${data.category}/${data.slug}`}>
-                <div className="flex justify-center items-center mb-4 aspect-square overflow-hidden rounded-md bg-slate-50 select-none">
-                    <div className="rounded-lg block relative transition duration-500 group-hover:scale-110">
+            <Link href={`/catalog/${data.slug}`}>
+                <div className="flex justify-center items-center mb-4 aspect-square overflow-hidden rounded-md select-none">
+                    <div className="h-full w-full rounded-lg block relative transition duration-500 group-hover:scale-110">
                         <Image
                             width={200} height={200}
                             src={data.images[0]}
                             alt={data.name}
-                            className="h-full w-full object-cover mix-blend-multiply"
+                            className="h-full w-full object-contain"
                             />
                     </div>
                 </div>
