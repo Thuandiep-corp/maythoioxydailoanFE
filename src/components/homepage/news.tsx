@@ -18,10 +18,10 @@ export function News() {
                             newsList.slice(0, 3).map((post) => (
                                 <div key={'news-item' + post.slug}>
                                     <Link href={`/blog/news/${post.slug}`} className="flex gap-4 group">
-                                        <Image src={post.img} width={128} height={80} alt="News" className="aspect-video rounded-md object-cover" />
+                                        <Image src={post.featuredImage} width={128} height={80} alt="News" className="aspect-video rounded-md object-cover" />
                                         <div>
                                             <p className="flex items-center gap-2 text-[10px] font-medium text-slate-400">
-                                                <span>{post.date}</span>
+                                                <span>{post.publishedDate}</span>
                                                 <span>•</span>
                                                 <span>{post.category}</span>
                                             </p>
@@ -36,7 +36,7 @@ export function News() {
                                 </div>
                             ))
                         }
-                        <Link href="/blog/news" className="text-sm font-semibold text-blue-600 hover:underline mx-auto">
+                        <Link href="/news/blogs" className="text-sm font-semibold text-blue-600 hover:underline mx-auto">
                             Xem tin cũ hơn
                             </Link>
                         </div>

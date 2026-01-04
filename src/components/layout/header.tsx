@@ -32,7 +32,7 @@ export function Header() {
             </div>
           </div>
           <div className="font-medium text-center md:text-left hidden md:block">
-            Máy thổi khí Đài Loan lớn nhất Việt Nam nè!!!!!
+            Máy thổi khí Đài Loan lớn nhất Việt Nam!
           </div>
           <div className="hidden md:flex items-center gap-6">
              <div className="flex items-center gap-2">

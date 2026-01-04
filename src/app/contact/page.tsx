@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
     return (
-        <article className="container mx-auto px-4 w-full py-6 sm:py-10 ">
+        <article className="container mx-auto px-4 w-full py-6 sm:py-10">
             <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <aside className="lg:col-span-5 bg-white rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-slate-100 overflow-hidden">
                     <div className="p-8 space-y-8">
