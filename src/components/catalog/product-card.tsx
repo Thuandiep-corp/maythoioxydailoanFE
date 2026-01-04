@@ -14,7 +14,7 @@ export function ProductCard({ data }:Props) {
                     <div className="rounded-lg block relative transition duration-500 group-hover:scale-110">
                         <Image
                             width={200} height={200}
-                            src={data.image}
+                            src={data.images[0]}
                             alt={data.name}
                             className="h-full w-full object-cover mix-blend-multiply"
                             />
@@ -25,7 +25,7 @@ export function ProductCard({ data }:Props) {
                     <h3 className="mt-1 line-clamp-2 text-sm font-bold text-slate-900 group-hover:text-blue-600">
                         {data.name}
                     </h3>
-                    <p className="text-xs text-slate-500">{data.description}</p>
+                    <p className="text-xs text-slate-500 line-clamp-3">{data.excerpt}</p>
                 </div>
             </Link>
             <div className="flex flex-1 flex-col justify-between select-none">

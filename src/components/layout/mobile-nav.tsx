@@ -1,10 +1,8 @@
 "use client"; 
-import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, LayoutGrid, Newspaper, Phone } from 'lucide-react';
 import { menuItems } from '@/const';
-import { title } from 'process';
 
 export function MobileNav() { 
     const pathname = usePathname();
@@ -16,13 +14,13 @@ export function MobileNav() {
                     const Icon = icons[index] || Home; 
                     const isActive = pathname === item.link;
                     return (
-                        <li  key={title} >
+                        <li  key={'nav-mobile-item-' + index}>
                         <Link 
                             href={item.link}
-                            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+                            className={`flex flex-col items-center justify-center w-full h-full transition-colors border-transparent ${
                                 isActive 
                                     ? 'text-[#408ebd] font-semibold' 
-                                    : 'text-gray-500 hover:text-[#408ebd]' 
+                                    : 'text-gray-500 hover:text-[#408ebd] border-x' 
                             }`}
                         >
                             <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
