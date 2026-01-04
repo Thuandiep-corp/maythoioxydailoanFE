@@ -50,7 +50,7 @@ export function Header() {
         <div className="container mx-auto px-4 flex items-center justify-between gap-4">
           <Link href="/" className="shrink-0 flex justify-start">
             <Image
-              src="/favicon.ico" 
+              src="/logo.png" 
               alt="Logo"
               width={50}
               height={29}
@@ -59,7 +59,7 @@ export function Header() {
           <nav className="hidden lg:block shrink-0">
             <ul className="flex items-center gap-6 xl:gap-8 text-gray-600 font-semibold text-[15px]">
               {menuItems.map((item, index) => (
-                <li key={item.name}>
+                <li key={'header-nav-item-' + index}>
                   <Link href={item.link} className="hover:text-[#408ebd] transition-colors whitespace-nowrap">
                     {item.name}
                   </Link>

@@ -40,9 +40,7 @@ export function VideoList({ limit, showViewAll = true }: VideoListProps) {
             return (
               <div key={'video-list-youtube-item-'+index} className="group cursor-pointer">
                 <div className="relative aspect-video rounded-xl overflow-hidden mb-3">
-                  <iframe width="580" height="327" loading="lazy" src={ video.url}
-                                title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-full h-full" />
-
+                  <iframe width="580" height="327" loading="lazy" src={ video.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-full h-full" />
                 </div>
                 <h3 className="text-sm font-bold text-gray-900 leading-tight group-hover:text-[#408ebd] transition-colors line-clamp-2">
                     {video.title}

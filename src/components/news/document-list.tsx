@@ -14,7 +14,6 @@ export function DocumentList({ limit, showViewAll = true }: DocumentListProps) {
   return (
     <section className="bg-slate-50 py-16">
       <div className="container mx-auto px-4 lg:px-8 text-center">
-        
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
             <FileText className="text-[#408ebd]" size={28} />
@@ -38,8 +37,8 @@ export function DocumentList({ limit, showViewAll = true }: DocumentListProps) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           {displayItems.map((doc, index) => (
-            <article key={index} className="group flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-200">              
-              <Link href={doc.link} target="_blank" className="relative aspect-[4/3] w-full overflow-hidden block">
+            <article key={'doc-item-index' + index} className="group flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-200">              
+              <Link href={doc.link} target="_blank" className="relative aspect-4/3 w-full overflow-hidden block">
                 <img 
                   alt={doc.title} 
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out" 

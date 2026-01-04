@@ -37,8 +37,8 @@ export function NewsList({ limit, showViewAll = true }: NewsListProps) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           {displayItems.map((item, index) => (
-            <article key={index} className="group flex flex-col h-full bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-              <Link href={item.link} className="relative aspect-[4/3] w-full overflow-hidden block">
+            <article key={'news-item-index-'+index} className="group flex flex-col h-full bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <Link href={item.link} className="relative aspect-4/3 w-full overflow-hidden block">
                 <img 
                   alt={item.title} 
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out" 
