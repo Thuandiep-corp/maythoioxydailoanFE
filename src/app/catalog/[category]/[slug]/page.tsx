@@ -34,7 +34,7 @@ export default async function ProductDetailPage(props: PageProps) {
     );
   }
 
-  const productImages = product.images || (product.image ? [product.image] : ["/logo.png"]);
+  const productImages = product.images || (product.images ? [product.images] : ["/logo.png"]);
 
   return (
     <article className="min-h-screen bg-white pb-20 pt-5">

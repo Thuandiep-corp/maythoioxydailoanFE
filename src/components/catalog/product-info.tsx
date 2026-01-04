@@ -1,18 +1,11 @@
 import Link from "next/link"
 import { ArrowRight, Phone, Share2, CheckCircle2 } from "lucide-react"
 
-interface ProductInfoProps {
-    product: {
-        name: string;
-        price: number;
-        sku?: string;
-        description: string;
-        spec?: string;
-    }
+type Props = {
+    product: Record<string, any>
 }
 
-export function ProductInfo({ product }: ProductInfoProps) {
-  // Format tiền tệ VND
+export function ProductInfo({ product }: Props) {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
   };
@@ -33,11 +26,12 @@ export function ProductInfo({ product }: ProductInfoProps) {
         <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
           {product.name}
         </h1>
-
-        <p className="text-slate-600 leading-relaxed mb-6 text-lg">
-          {product.description}
-        </p>
-
+        {product.excerpt && (
+            <p className="text-slate-600 leading-relaxed mb-6 text-base">
+                {product.excerpt}
+            </p>
+        )}
+ 
         <div className="mb-6 p-4 bg-slate-50 rounded-xl border border-slate-100">
           <p className="text-sm text-slate-500 mb-1">Giá bán tham khảo:</p>
           <div className="flex items-baseline gap-2">
@@ -68,8 +62,6 @@ export function ProductInfo({ product }: ProductInfoProps) {
             </button>
           </div>
         </div>
-
-        {/* Tags / Keywords */}
         <div className="pt-6 border-t border-slate-100">
           <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 block">
             Thông số nổi bật
@@ -84,6 +76,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
             <span className="text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">
                Bảo hành 12 tháng
             </span>
+            <div dangerouslySetInnerHTML={{ __html: product.description }} />
           </div>
         </div>
       </div>
