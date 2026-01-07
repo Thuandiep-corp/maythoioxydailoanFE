@@ -1,10 +1,12 @@
+"use client"; 
+import { usePathname } from 'next/navigation'; 
 import Link from 'next/link';
 import { Search, ShoppingCart, Facebook, Instagram, Phone, Mail } from 'lucide-react';
 import { menuItems } from '@/const';
 import Image from 'next/image';
 
 export function Header() {
-
+  const pathname = usePathname();
 
   return (
     <header className="font-sans w-full sticky top-0 left-0 z-50 shadow-sm">
@@ -58,13 +60,36 @@ export function Header() {
           </Link>
           <nav className="hidden lg:block shrink-0">
             <ul className="flex items-center gap-6 xl:gap-8 text-gray-600 font-semibold text-[15px]">
-              {menuItems.map((item, index) => (
-                <li key={'header-nav-item-' + index}>
-                  <Link href={item.link} className="hover:text-[#408ebd] transition-colors whitespace-nowrap">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
+              {menuItems.map((item, index) => {
+                const isActive = item.link === '/' 
+                  ? pathname === '/' 
+                  : pathname.startsWith(item.link);
+
+                return (
+                  <li key={'header-nav-item-' + index}>
+                    <Link 
+                      href={item.link} 
+                      className={`
+                        relative block py-1 transition-colors whitespace-nowrap
+                        after:content-[''] 
+                        after:absolute 
+                        after:left-0 
+                        after:bottom-0 
+                        after:h-[2px] 
+                        after:bg-[#408ebd] 
+                        after:transition-all 
+                        after:duration-300 
+                        ${isActive 
+                          ? "text-[#408ebd] after:w-full" 
+                          : "hover:text-[#408ebd] after:w-0 hover:after:w-full"
+                        }
+                      `}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
           <section className="flex items-center gap-3 flex-1 justify-end max-w-2xl ml-auto">
