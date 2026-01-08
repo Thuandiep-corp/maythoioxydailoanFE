@@ -66,7 +66,7 @@ export function Header() {
                   : pathname.startsWith(item.link);
 
                 return (
-                  <li key={'header-nav-item-' + index}>
+                  <li key={'header-item-' + index}>
                     <Link 
                       href={item.link} 
                       className={`
