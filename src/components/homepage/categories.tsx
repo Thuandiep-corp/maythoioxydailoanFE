@@ -8,7 +8,7 @@ export function Categories() {
           <span className="text-[10px] font-bold tracking-widest text-blue-600 uppercase">DANH MỤC SẢN PHẨM</span>
           <h2 className="mt-2 text-3xl font-bold text-slate-900">Giải pháp cho mọi nhu cầu</h2>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
             {categories.map((cat, i) => (
               <Link href={`/catalog?category=${cat.slug}`}
                 key={i}
