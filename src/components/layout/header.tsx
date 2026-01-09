@@ -75,7 +75,7 @@ export function Header() {
                         after:absolute 
                         after:left-0 
                         after:bottom-0 
-                        after:h-[2px] 
+                        after:h-0.5
                         after:bg-[#408ebd] 
                         after:transition-all 
                         after:duration-300 
