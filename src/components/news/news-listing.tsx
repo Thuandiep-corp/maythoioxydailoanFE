@@ -54,8 +54,8 @@ export function NewsListing() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sortedNews.map((item) => (
-                <BlogCard key={item.id} data={item} />
-            ))}
+              <BlogCard key={'news-listing-' + item.id} data={item} />
+          ))}
         </div>
         <div className="mt-12 flex justify-center">
             <button className="px-6 py-2 bg-white border border-gray-200 text-gray-600 rounded-lg hover:border-[#408ebd] hover:text-[#408ebd] transition-colors font-medium">

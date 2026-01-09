@@ -37,8 +37,8 @@ export function NewsSidebar() {
           Tài liệu kỹ thuật
         </h3>
         <div className="space-y-4">
-          {recentDocs.map((doc, idx) => (
-            <Link key={idx} href={`/news/blogs/${doc.slug}`} className="group flex gap-3 items-start">
+          {recentDocs.map((doc, prefix) => (
+            <Link key={prefix} href={`/news/blogs/${doc.slug}`} className="group flex gap-3 items-start">
               <div className="w-24 aspect-video shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-gray-100">
                 <img 
                     src={doc.featuredImage} 

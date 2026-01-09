@@ -68,8 +68,8 @@ export function NewsDetail({ slug }: NewsDetailProps) {
                     <div className="flex items-center gap-2">
                         <Tag size={18} className="text-gray-400" />
                         <div className="flex flex-wrap gap-2">
-                            {post.tags.map((tag, idx) => (
-                                <span key={idx} className="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-600 hover:bg-gray-200 cursor-pointer transition capitalize">
+                            {post.tags.map((tag, prefix) => (
+                                <span key={prefix} className="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-600 hover:bg-gray-200 cursor-pointer transition capitalize">
                                     {tag}
                                 </span>
                             ))}
@@ -86,8 +86,8 @@ export function NewsDetail({ slug }: NewsDetailProps) {
                     Bài viết liên quan
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {relatedPosts.map((item, idx) => (
-                        <Link key={idx} href={`/news/blogs/${item.slug}`} className="group flex flex-col h-full bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all">
+                    {relatedPosts.map((item, prefix) => (
+                        <Link key={prefix} href={`/news/blogs/${item.slug}`} className="group flex flex-col h-full bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all">
                             <div className="aspect-16/10 overflow-hidden bg-gray-100">
                                 <img 
                                     src={item.featuredImage} 
