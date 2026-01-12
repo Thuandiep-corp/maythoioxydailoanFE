@@ -20,7 +20,7 @@ export function MobileNav() {
                             className={`flex flex-col items-center justify-center w-full h-full transition-colors border-transparent ${
                                 isActive 
                                     ? 'text-[#408ebd] font-semibold' 
-                                    : 'text-gray-500 hover:text-[#408ebd] border-x' 
+                                    : 'text-gray-600 hover:text-[#408ebd] border-x' 
                             }`}
                         >
                             <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />

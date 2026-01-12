@@ -1,10 +1,12 @@
+"use client"; 
+import { usePathname } from 'next/navigation'; 
 import Link from 'next/link';
 import { Search, ShoppingCart, Facebook, Instagram, Phone, Mail } from 'lucide-react';
 import { menuItems } from '@/const';
 import Image from 'next/image';
 
 export function Header() {
-
+  const pathname = usePathname();
 
   return (
     <header className="font-sans w-full sticky top-0 left-0 z-50 shadow-sm">
@@ -32,7 +34,7 @@ export function Header() {
             </div>
           </div>
           <div className="font-medium text-center md:text-left hidden md:block">
-            Máy thổi khí Đài Loan lớn nhất Việt Nam nè!!!!!
+            Máy thổi khí Đài Loan lớn nhất Việt Nam!
           </div>
           <div className="hidden md:flex items-center gap-6">
              <div className="flex items-center gap-2">
@@ -50,21 +52,44 @@ export function Header() {
         <div className="container mx-auto px-4 flex items-center justify-between gap-4">
           <Link href="/" className="shrink-0 flex justify-start">
             <Image
-              src="/favicon.ico" 
+              src="/logo.png" 
               alt="Logo"
               width={50}
-              height={50}
+              height={29}
             />  
           </Link>
           <nav className="hidden lg:block shrink-0">
             <ul className="flex items-center gap-6 xl:gap-8 text-gray-600 font-semibold text-[15px]">
-              {menuItems.map((item, index) => (
-                <li key={item.name}>
-                  <Link href={item.link} className="hover:text-[#408ebd] transition-colors whitespace-nowrap">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
+              {menuItems.map((item, index) => {
+                const isActive = item.link === '/' 
+                  ? pathname === '/' 
+                  : pathname.startsWith(item.link);
+
+                return (
+                  <li key={'header-nav-item-' + index}>
+                    <Link 
+                      href={item.link} 
+                      className={`
+                        relative block py-1 transition-colors whitespace-nowrap
+                        after:content-[''] 
+                        after:absolute 
+                        after:left-0 
+                        after:bottom-0 
+                        after:h-0.5
+                        after:bg-[#408ebd] 
+                        after:transition-all 
+                        after:duration-300 
+                        ${isActive 
+                          ? "text-[#408ebd] after:w-full" 
+                          : "hover:text-[#408ebd] after:w-0 hover:after:w-full"
+                        }
+                      `}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
           <section className="flex items-center gap-3 flex-1 justify-end max-w-2xl ml-auto">
@@ -76,12 +101,13 @@ export function Header() {
                 />
                 <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer hover:text-[#408ebd]" size={20} />
             </div>
-            <div className="hidden md:flex items-center gap-2 border border-gray-200 rounded-full px-5 py-2.5 hover:border-[#408ebd] hover:text-[#408ebd] transition-colors relative group shrink-0">
+            <div className="flex items-center gap-2 border border-gray-200 rounded-full px-5 py-2.5 hover:border-[#408ebd] hover:text-[#408ebd] transition-colors relative group shrink-0">
                 <ShoppingCart size={20} />
-                <span className="font-semibold text-sm">Giỏ hàng</span>
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white">
+                
+                <p className="hidden md:inline font-semibold text-sm">Giỏ hàng</p>
+                <p className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white">
                     0
-                </span>
+                </p>
             </div>
           </section>
         </div>

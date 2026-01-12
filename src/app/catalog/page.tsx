@@ -84,7 +84,11 @@ function CatalogPageContent() {
         </section>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {
-            productList.map((item, index) => <ProductCard key={'product-item-' + item.id + '-' + index} data={item} />)
+            productList.map((item, index) => <ProductCard key={'product-item-' + item.id + '-' + index} data={item} imgAtributes={{
+              loading: index === 0 ? 'eager' : 'lazy',
+              decoding: index === 0 ? 'async' : 'auto',
+              fetchPriority: index === 0 ? 'high' : 'auto'
+            }} />)
           }
         </div>
         <div className="mt-12 flex justify-center items-center gap-2 select-none">

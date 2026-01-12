@@ -4,9 +4,10 @@ import { Plus } from "lucide-react";
 
 type Props = {
     data: Record<string, any>
+    imgAtributes?: Record<string, any>
 }
 
-export function ProductCard({ data }:Props) {
+export function ProductCard({ data, imgAtributes }:Props) {
     return (
         <section className="flex flex-col gap-2 bg-white rounded-lg shadow-md p-4 hover:shadow-lg group">
             <Link href={`/catalog/${data.slug}`}>
@@ -16,6 +17,8 @@ export function ProductCard({ data }:Props) {
                             width={200} height={200}
                             src={data.images[0]}
                             alt={data.name}
+                            loading="lazy"
+                            {...imgAtributes}
                             className="h-full w-full object-contain"
                             />
                     </div>
