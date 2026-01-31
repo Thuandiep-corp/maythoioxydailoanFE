@@ -19,3 +19,64 @@ export const getProductCategoryList = cache(async () => {
       return null
   }
 })
+
+export const getProductList = cache(async (params: any = {}) => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate", "*")
+    searchParams.append("sort", "sort_weight:desc")
+
+    if (params.categorySlug) {
+        searchParams.append("filters[category][slug][$eq]", params.categorySlug)
+    }
+  try {
+    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "authorization": `Bearer ${API_TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+      console.error("Error fetching product categories:", error)
+      return null
+  }
+})
+
+export const getProductDetail = cache(async (slug: string) => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate", "*")
+    searchParams.append("filters[slug][$eq]", slug) 
+  try {
+    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+        headers: {
+            "Content-Type": "application/json",
+            " authorization": `Bearer ${API_TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    return data
+  }   catch (error) {             
+      console.error("Error fetching product by slug:", error)
+      return null
+  }
+})
+
+export const getRelatedProducts = cache(async () => {     
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate", "*")
+    searchParams.append("pagination[pageSize]", "100")
+  try {
+    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+        headers: {
+            "Content-Type": "application/json",
+            " authorization": `Bearer ${API_TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+      console.error("Error fetching all products:", error)
+      return null
+  } 
+})
