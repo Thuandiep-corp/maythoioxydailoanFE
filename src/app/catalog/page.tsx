@@ -2,7 +2,6 @@
 
 import { ProductCard } from "@/components";
 import { productList } from "@/moocs/catalog";
-import { categories } from "@/moocs/categories";
 import { ArrowRight, Filter } from "lucide-react";
 
 import { useState, useEffect, Suspense } from "react";
@@ -16,13 +15,30 @@ export default function Page() {
 }
 
 import { useSearchParams } from "next/navigation";
+import { getProductCategoryList } from "@/action/product.action";
 
 function CatalogPageContent() {
   const searchParams = useSearchParams();
   const [activeCategory, setActiveCategory] = useState("all");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
-
+  const [categories, setCategories] = useState<Array<any>>([]);
+  const [isLoadingCat, setIsLoadingCat] = useState(false);
+  useEffect(() => { 
+    (async () => { 
+      try { 
+        setIsLoadingCat(true)
+        const response = await getProductCategoryList()
+      if (!!response && !!response?.data) { 
+        setCategories(response?.data || [])
+      }
+      } catch (error) { 
+        console.error('Error fetching product categories:', error)
+      } finally { 
+        setIsLoadingCat(false)
+      }
+    })()
+  }, [])
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeCategory, pageNumber]);
@@ -45,31 +61,37 @@ function CatalogPageContent() {
       </div>
       <aside className={`lg:w-72 shrink-0 space-y-6 ${isSidebarOpen ? "block" : "hidden lg:block"}`}>
         <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-slate-900 mb-4 px-2">Danh mục sản phẩm</h2>
-          <ul className="space-y-1 select-auto">
-            {[{
-              title: "Tất cả",
-              slug: "all",
-              count: 100
-            }, ...categories].map((cat) => (
-              <li key={cat.slug} onClick={() => {
-                setActiveCategory(cat.slug);
-                setIsSidebarOpen(false);
-              }} className={`w-full flex items-center justify-between p-2 rounded-md text-sm transition-colors cursor-pointer ${
-                (activeCategory === cat.slug)
-                  ? "bg-brand-light text-brand-blue font-medium"
-                  : "text-slate-600 hover:bg-slate-50"
-              }`}>
-                <span className="flex items-center gap-2">
-                  {cat.title}
-                  {(activeCategory === cat.slug) && (
-                    <ArrowRight size={14} className="-rotate-45" />
-                  )}
-                </span>
-                {<span className="text-xs text-slate-400">{cat?.count || 0}</span>}
-              </li>
-            ))}
-          </ul>
+          { 
+            isLoadingCat ? (
+              <p className="text-sm text-slate-500">Đang tải danh mục...</p>
+            ) : <>
+            <h2 className="text-lg font-bold text-slate-900 mb-4 px-2">Danh mục sản phẩm</h2>
+            <ul className="space-y-1 select-auto">
+              {[{
+                name: "Tất cả",
+                slug: "all",
+                count: 100
+              }, ...categories].map((cat) => (
+                <li key={cat.slug} onClick={() => {
+                  setActiveCategory(cat.slug);
+                  setIsSidebarOpen(false);
+                  window.history.replaceState(null, '', `/catalog${cat.slug === 'all' ? '' : `?category=${cat.slug}`}`);
+                }} className={`w-full flex items-center justify-between p-2 rounded-md text-sm transition-colors cursor-pointer ${
+                  (activeCategory === cat.slug)
+                    ? "bg-brand-light text-brand-blue font-medium"
+                    : "text-slate-600 hover:bg-slate-50"
+                }`}>
+                  <span className="flex items-center gap-2 uppercase">
+                    {cat.name}
+                    {(activeCategory === cat.slug) && (
+                      <ArrowRight size={14} className="-rotate-45" />
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            </>
+          }
         </div>
       </aside>
       <section className="flex-1">
