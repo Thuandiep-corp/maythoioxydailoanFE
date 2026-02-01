@@ -62,21 +62,4 @@ export const getProductDetail = cache(async (slug: string) => {
   }
 })
 
-export const getRelatedProducts = cache(async () => {     
-    const searchParams = new URLSearchParams()
-    searchParams.append("populate", "*")
-    searchParams.append("pagination[pageSize]", "100")
-  try {
-    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
-        headers: {
-            "Content-Type": "application/json",
-            " authorization": `Bearer ${API_TOKEN}`,
-      },
-    })
-    const data = await response.json()
-    return data
-  } catch (error) {
-      console.error("Error fetching all products:", error)
-      return null
-  } 
-})
+
