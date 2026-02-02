@@ -62,4 +62,40 @@ export const getProductDetail = cache(async (slug: string) => {
   }
 })
 
+export const getProductSeo = cache(async () => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate[seo][populate]", "*")
+    searchParams.append("filters[slug][$eq]", "product")
+    try {
+        const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${API_TOKEN}`,
+            },
+        })
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.error("Error fetching pages:", error)
+        return null
+    }
+})
 
+export const getProductData = cache(async () => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate", "*")
+    searchParams.append("filters[slug][$eq]", "products")
+    try {
+        const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${API_TOKEN}`,
+            },
+        })
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.error("Error fetching pages:", error)
+        return null
+    }
+})
