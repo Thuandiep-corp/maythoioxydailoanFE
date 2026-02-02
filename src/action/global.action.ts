@@ -22,7 +22,6 @@ export const getGlobalConfig = cache(async () => {
 export const getGlobalSeo = cache(async () => {
     const searchParams = new URLSearchParams()
     searchParams.append("populate[seo][populate]", "*")
-    searchParams.append("filters[slug][$eq]", "global")
     try {
         const response = await fetch(`${API_URL}/global?${searchParams.toString()}`, {
             headers: {
@@ -33,7 +32,7 @@ export const getGlobalSeo = cache(async () => {
         const data = await response.json()
         return data
     } catch (error) {
-        console.error("Error fetching pages:", error)
+        console.error("Error fetching global SEO:", error)
         return null
     }
 })
@@ -41,7 +40,6 @@ export const getGlobalSeo = cache(async () => {
 export const getGlobalData = cache(async () => {
     const searchParams = new URLSearchParams()
     searchParams.append("populate", "*")
-    searchParams.append("filters[slug][$eq]", "global")
     try {
         const response = await fetch(`${API_URL}/global?${searchParams.toString()}`, {
             headers: {
@@ -52,7 +50,7 @@ export const getGlobalData = cache(async () => {
         const data = await response.json()
         return data
     } catch (error) {
-        console.error("Error fetching pages:", error)
+        console.error("Error fetching global data:", error)
         return null
     }
 })
