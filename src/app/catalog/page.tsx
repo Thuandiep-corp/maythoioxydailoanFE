@@ -3,8 +3,9 @@
 import { ProductCard } from "@/components";
 import { productList } from "@/moocs/catalog";
 import { ArrowRight, Filter } from "lucide-react";
-
 import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { getProductCategoryList } from "@/action/product.action";
 
 export default function Page() {
   return (
@@ -13,9 +14,6 @@ export default function Page() {
     </Suspense>
   );
 }
-
-import { useSearchParams } from "next/navigation";
-import { getProductCategoryList } from "@/action/product.action";
 
 function CatalogPageContent() {
   const searchParams = useSearchParams();

@@ -1,12 +1,12 @@
 import { API_TOKEN, API_URL } from "@/const"
 import { cache } from "react"
 
-export const getProductCategoryList = cache(async () => {
+export const getNews = cache(async () => {
     const searchParams = new URLSearchParams()
     searchParams.append("populate", "*")
     searchParams.append("sort", "sort_weight:desc")
   try {
-    const response = await fetch(`${API_URL}/category-products?${searchParams.toString()}`, {
+    const response = await fetch(`${API_URL}/articles?${searchParams.toString()}`, {
         headers: {
             "Content-Type": "application/json",
             "authorization": `Bearer ${API_TOKEN}`,
@@ -20,16 +20,12 @@ export const getProductCategoryList = cache(async () => {
   }
 })
 
-export const getProductList = cache(async (params: any = {}) => {
+export const getNewsCategory = cache(async () => {
     const searchParams = new URLSearchParams()
     searchParams.append("populate", "*")
     searchParams.append("sort", "sort_weight:desc")
-
-    if (params.categorySlug) {
-        searchParams.append("filters[category][slug][$eq]", params.categorySlug)
-    }
   try {
-    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+    const response = await fetch(`${API_URL}/category-articles?${searchParams.toString()}`, {
         headers: {
             "Content-Type": "application/json",
             "authorization": `Bearer ${API_TOKEN}`,
@@ -43,23 +39,21 @@ export const getProductList = cache(async (params: any = {}) => {
   }
 })
 
-export const getProductDetail = cache(async (slug: string) => {
+export const getVideo = cache(async () => {
     const searchParams = new URLSearchParams()
     searchParams.append("populate", "*")
-    searchParams.append("filters[slug][$eq]", slug) 
+    searchParams.append("sort", "sort_weight:desc")
   try {
-    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+    const response = await fetch(`${API_URL}/videos?${searchParams.toString()}`, {
         headers: {
             "Content-Type": "application/json",
-            " authorization": `Bearer ${API_TOKEN}`,
+            "authorization": `Bearer ${API_TOKEN}`,
       },
     })
     const data = await response.json()
     return data
-  }   catch (error) {             
-      console.error("Error fetching product by slug:", error)
+  } catch (error) {
+      console.error("Error fetching product categories:", error)
       return null
   }
 })
-
-
