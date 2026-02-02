@@ -18,3 +18,41 @@ export const getPageList = cache(async () => {
         return null
     }
 })
+
+export const getHomepageSeo = cache(async () => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate[seo][populate]", "*")
+    searchParams.append("filters[slug][$eq]", "home")
+    try {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${API_TOKEN}`,
+            },
+        })
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.error("Error fetching pages:", error)
+        return null
+    }
+})
+
+export const getHomepageData = cache(async () => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate", "*")
+    searchParams.append("filters[slug][$eq]", "home")
+    try {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${API_TOKEN}`,
+            },
+        })
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.error("Error fetching pages:", error)
+        return null
+    }
+})

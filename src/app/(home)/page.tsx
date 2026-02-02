@@ -3,8 +3,10 @@ import { newsList } from '@/moocs/news-and-document';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export default function HomePage() {
+export const revalidate = 3600; // 1 hour
 
+
+export default async function HomePage() {
   return (
     <article className="bg-gray-50 min-h-screen">
       <Carousel />

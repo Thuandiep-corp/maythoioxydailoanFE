@@ -8,6 +8,8 @@ export async function Categories() {
   if (!response) return null
   const categories = response?.data || []
   if (categories.length === 0) return null
+  console.log(categories);
+  
   return (
     <section className="bg-slate-50 py-16">
         <div className="container mx-auto px-4 lg:px-8 text-center">
@@ -25,7 +27,7 @@ export async function Categories() {
                 <div className="aspect-video max-w-25">
                   <Image src={`${IMAGE_URL}${imgInfor?.url}`} alt={cat?.alternativeText || 'Category image'} title={imgInfor?.title || cat.name} width={imgInfor?.width || 96} height={imgInfor?.height || 70} className="w-full h-full object-contain"/>
                 </div>
-                <p className="text-sm font-semibold text-slate-700 line-clamp-1">{cat.title}</p>
+                <p className="text-sm font-semibold text-slate-700 line-clamp-1">{cat.name}</p>
               </Link>
             )})}
           </div>

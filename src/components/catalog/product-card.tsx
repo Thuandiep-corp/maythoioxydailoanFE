@@ -19,7 +19,7 @@ export function ProductCard({ data, imgAtributes }:Props) {
                             alt={data.name}
                             loading="lazy"
                             {...imgAtributes}
-                            className="h-full w-full object-contain"
+                            className="h-full w-full object-cover"
                             />
                     </div>
                 </div>

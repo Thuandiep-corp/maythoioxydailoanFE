@@ -13,10 +13,10 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: "Máy Thổi Oxy Đài Loan - Thuandiep Corp",
-    template: "%s | Thuandiep Corp",
+    default: "Máy Thổi Oxy Đài Loan - Thành Đạt Corp",
+    template: "%s | Thành Đạt Corp",
   },
-  keywords: ["maythoioxydailoan", "thanhdat", "thoi khi"],
+  keywords: ["maythoioxydailoan", "Máy thổi Oxy Đài Loan", "Siêu Tiết Kiệm Điện", "Đầu thổi khí Đài Loan RL"],
   icons: {
     icon: "/thuandiep-logo.png",
   },
