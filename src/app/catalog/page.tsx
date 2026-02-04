@@ -1,97 +1,21 @@
-'use client';
-
-import { ProductCard } from "@/components";
-import { productList } from "@/moocs/catalog";
-import { ArrowRight, Filter } from "lucide-react";
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import { getProductCategoryList } from "@/action/product.action";
-
-export default function Page() {
-  return (
-    <Suspense fallback={<>...</>}>
-      <CatalogPageContent />
-    </Suspense>
-  );
+import { CategorySidebar, ProductCard } from "@/components";
+import { getProductCategoryList, getProductList } from "@/action/product.action";
+type Props = {
+  searchParams: Promise<{ [key: string]: string | undefined }>
 }
 
-function CatalogPageContent() {
-  const searchParams = useSearchParams();
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [categories, setCategories] = useState<Array<any>>([]);
-  const [isLoadingCat, setIsLoadingCat] = useState(false);
-  useEffect(() => { 
-    (async () => { 
-      try { 
-        setIsLoadingCat(true)
-        const response = await getProductCategoryList()
-      if (!!response && !!response?.data) { 
-        setCategories(response?.data || [])
-      }
-      } catch (error) { 
-        console.error('Error fetching product categories:', error)
-      } finally { 
-        setIsLoadingCat(false)
-      }
-    })()
-  }, [])
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [activeCategory, pageNumber]);
+export const revalidate = 3600; // 1 hour
 
-  useEffect(() => {
-    const categoryFromUrl = searchParams.get('category');
-    if (categoryFromUrl) {
-      setActiveCategory(categoryFromUrl);
-    }
-  }, [searchParams]);
+export default async function Page({ searchParams } : Props) {
+  const responseCategories = await getProductCategoryList()
+  const categories = responseCategories?.data || []
+  const category = (await searchParams)?.category || "all"
+  const responseProducts = await getProductList({ categorySlug: category })
+  const productsList = responseProducts?.data || []
 
   return (
-    <article className="container mx-auto px-4 w-full py-6 sm:py-10 flex flex-col lg:flex-row gap-8">
-      <div
-        className="lg:hidden flex items-center justify-center gap-2 w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm shadow-lg mb-4"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      >
-        <Filter size={18} />
-        {isSidebarOpen ? "Đóng bộ lọc" : "Danh mục sản phẩm"}
-      </div>
-      <aside className={`lg:w-72 shrink-0 space-y-6 ${isSidebarOpen ? "block" : "hidden lg:block"}`}>
-        <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-          { 
-            isLoadingCat ? (
-              <p className="text-sm text-slate-500">Đang tải danh mục...</p>
-            ) : <>
-            <h2 className="text-lg font-bold text-slate-900 mb-4 px-2">Danh mục sản phẩm</h2>
-            <ul className="space-y-1 select-auto">
-              {[{
-                name: "Tất cả",
-                slug: "all",
-                count: 100
-              }, ...categories].map((cat) => (
-                <li key={cat.slug} onClick={() => {
-                  setActiveCategory(cat.slug);
-                  setIsSidebarOpen(false);
-                  window.history.replaceState(null, '', `/catalog${cat.slug === 'all' ? '' : `?category=${cat.slug}`}`);
-                }} className={`w-full flex items-center justify-between p-2 rounded-md text-sm transition-colors cursor-pointer ${
-                  (activeCategory === cat.slug)
-                    ? "bg-brand-light text-brand-blue font-medium"
-                    : "text-slate-600 hover:bg-slate-50"
-                }`}>
-                  <span className="flex items-center gap-2 uppercase">
-                    {cat.name}
-                    {(activeCategory === cat.slug) && (
-                      <ArrowRight size={14} className="-rotate-45" />
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            </>
-          }
-        </div>
-      </aside>
+    <article className={`container mx-auto px-4 w-full py-6 sm:py-10 flex flex-col lg:flex-row gap-8`}>
+      <CategorySidebar categories={categories} />
       <section className="flex-1">
         <section className="mb-8">
           <h1 className="text-2xl sm:text-4xl font-black text-slate-900 mb-2 leading-tight">
@@ -104,25 +28,12 @@ function CatalogPageContent() {
         </section>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {
-            productList.map((item, index) => <ProductCard key={'product-item-' + item.id + '-' + index} data={item} imgAtributes={{
+            productsList.map((item:any, index: number) => <ProductCard key={'product-item-' + item.id + '-' + index} data={item} imgAtributes={{
               loading: index === 0 ? 'eager' : 'lazy',
               decoding: index === 0 ? 'async' : 'auto',
               fetchPriority: index === 0 ? 'high' : 'auto'
             }} />)
           }
-        </div>
-        <div className="mt-12 flex justify-center items-center gap-2 select-none">
-          <div className="w-10 h-10 border border-slate-200 rounded-xl flex items-center justify-center text-slate-400 hover:border-brand-blue hover:bg-slate-50 transition-colors" onClick={() => setPageNumber(pre => pre - 1)}>
-            <ArrowRight className="rotate-180" size={18} />
-          </div>
-          {
-            Array(3).fill(null).map((_, index) => (
-              <div key={'prudct-list-paging-item-' + index} className={`flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl font-bold text-slate-600 ${pageNumber === index + 1 ? 'bg-blue-900 text-white shadow-md' : 'bg-white hover:bg-slate-50 shadow-none'}`} onClick={() => setPageNumber(index + 1)}>{index + 1}</div>
-            ))
-          }
-          <div className="w-10 h-10 border border-slate-200 rounded-xl flex items-center justify-center text-slate-400 hover:border-brand-blue hover:bg-slate-50 transition-colors">
-            <ArrowRight size={18} />
-          </div>
         </div>
       </section>
     </article>

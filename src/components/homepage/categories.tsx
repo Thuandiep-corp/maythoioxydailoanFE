@@ -8,7 +8,6 @@ export async function Categories() {
   if (!response) return null
   const categories = response?.data || []
   if (categories.length === 0) return null
-  console.log(categories);
   
   return (
     <section className="bg-slate-50 py-16">

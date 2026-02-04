@@ -2,9 +2,7 @@ import { getHomepageSeo } from "@/action/pages.action";
 import { IMAGE_URL } from "@/const";
 import { Metadata } from "next";
 
-
 export const revalidate = 3600; // 1 hour
-
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await getHomepageSeo();

@@ -25,8 +25,8 @@ export const getProductList = cache(async (params: any = {}) => {
     searchParams.append("populate", "*")
     searchParams.append("sort", "sort_weight:desc")
 
-    if (params.categorySlug) {
-        searchParams.append("filters[category][slug][$eq]", params.categorySlug)
+    if (params.categorySlug !== "all") {
+        searchParams.append("filters[category_products][slug][$eq]", params.categorySlug)
     }
   try {
     const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
