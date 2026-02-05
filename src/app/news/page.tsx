@@ -1,18 +1,25 @@
-
+import { getNewsData } from '@/action/pages.action';
 import { BlogCard, DocumentCard, VideoCard } from '@/components';
 import { newsList, videoList } from '@/moocs/news-and-document';
 import { ArrowRight, FileText, MonitorPlay } from 'lucide-react';
 import Link from 'next/link';
 
-export default function TinTucPage() {
+export const revalidate = 3600; // 1 hour
+
+export default async function TinTucPage() {
+  const responseDataNewsList = await getNewsData();
+  const newsDataList = responseDataNewsList?.data?.[0]
+  const PageContent = newsDataList?.PageContent?.filter((item: any) => item.__component === 'sections.hero-section');
+  const PageContentData = PageContent?.[0] || null;
+  console.log('PageContentData', PageContentData);
   return (
     <article className="container mx-auto px-4 w-full py-6 sm:py-10 space-y-10">
       <section className="">
           <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-3">
-              Tin tức & Tài nguyên
+              {PageContentData?.title || 'Tin tức & Tài liệu kỹ thuật'}
           </h1>
           <p className="text-gray-500 text-lg">
-              Tổng hợp các bài viết chuyên ngành, tài liệu kỹ thuật và video hướng dẫn sử dụng sản phẩm.
+              {PageContentData?.excerpt || 'Cập nhật tin tức mới nhất về máy thổi oxy Đài Loan, cùng các tài liệu kỹ thuật hữu ích giúp bạn hiểu rõ hơn về sản phẩm và ứng dụng trong thực tế.'}
           </p>
       </section>
       <section className="bg-white border border-slate-100 rounded-xl p-4 shadow-sm mb-12 flex flex-col md:flex-row items-center justify-between gap-4">

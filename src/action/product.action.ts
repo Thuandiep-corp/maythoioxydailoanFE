@@ -28,6 +28,7 @@ export const getProductList = cache(async (params: any = {}) => {
     if (params.categorySlug !== "all") {
         searchParams.append("filters[category_products][slug][$eq]", params.categorySlug)
     }
+    console.log('API_URL', API_URL);
   try {
     const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
         headers: {
