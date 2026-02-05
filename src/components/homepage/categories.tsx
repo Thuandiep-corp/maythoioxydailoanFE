@@ -3,11 +3,7 @@ import { IMAGE_URL } from "@/const";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function Categories() { 
-  const response = await getProductCategoryList()
-  if (!response) return null
-  const categories = response?.data || []
-  if (categories.length === 0) return null
+export async function Categories({ categories }: any) { 
   
   return (
     <section className="bg-slate-50 py-16">

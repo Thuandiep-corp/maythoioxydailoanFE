@@ -62,7 +62,7 @@ export const getNewsSeo = cache(async () => {
     searchParams.append("populate[seo][populate]", "*")
     searchParams.append("filters[slug][$eq]", "news")
     try {
-        const response = await fetch(`${API_URL}/news?${searchParams.toString()}`, {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
             headers: {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${API_TOKEN}`,
@@ -81,7 +81,7 @@ export const getNewsData = cache(async () => {
     searchParams.append("populate", "*")
     searchParams.append("filters[slug][$eq]", "news")
     try {
-        const response = await fetch(`${API_URL}/news?${searchParams.toString()}`, {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
             headers: {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${API_TOKEN}`,
@@ -98,9 +98,9 @@ export const getNewsData = cache(async () => {
 export const getProductSeo = cache(async () => {
     const searchParams = new URLSearchParams()
     searchParams.append("populate[seo][populate]", "*")
-    searchParams.append("filters[slug][$eq]", "product")
+    searchParams.append("filters[slug][$eq]", "catalog")
     try {
-        const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
             headers: {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${API_TOKEN}`,
@@ -117,9 +117,9 @@ export const getProductSeo = cache(async () => {
 export const getProductData = cache(async () => {
     const searchParams = new URLSearchParams()
     searchParams.append("populate", "*")
-    searchParams.append("filters[slug][$eq]", "products")
+    searchParams.append("filters[slug][$eq]", "catalog")
     try {
-        const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
             headers: {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${API_TOKEN}`,
@@ -138,7 +138,7 @@ export const getContactSeo = cache(async () => {
     searchParams.append("populate[seo][populate]", "*")
     searchParams.append("filters[slug][$eq]", "contact")
     try {
-        const response = await fetch(`${API_URL}/contacts?${searchParams.toString()}`, {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
             headers: {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${API_TOKEN}`,
@@ -157,7 +157,7 @@ export const getContactData = cache(async () => {
     searchParams.append("populate", "*")
     searchParams.append("filters[slug][$eq]", "contact")
     try {
-        const response = await fetch(`${API_URL}/contacts?${searchParams.toString()}`, {
+        const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
             headers: {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${API_TOKEN}`,

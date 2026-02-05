@@ -32,9 +32,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
       </head>
-      <body
+      <body suppressHydrationWarning={true}
         className={`${roboto.className} antialiased flex flex-col items-center`}
       >
+        
         <Header />
         <main className="min-h-screen w-full">
           {children}

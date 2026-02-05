@@ -15,7 +15,7 @@ export function ProductCard({ data, imgAtributes }: Props) {
                     <div className="h-full w-full rounded-lg block relative transition duration-500 group-hover:scale-110">
                         <Image
                             width={200} height={200}
-                                    src={`${IMAGE_URL}${data?.image?.url}`}
+                                    src={data?.image?.url ? `${IMAGE_URL}${data?.image?.url}` : '/logo.png'}
                                     alt={data?.image?.alternativeText || data?.name}
                             loading="lazy"
                             {...imgAtributes}
