@@ -11,7 +11,6 @@ export default async function TinTucPage() {
   const newsDataList = responseDataNewsList?.data?.[0]
   const PageContent = newsDataList?.PageContent?.filter((item: any) => item.__component === 'sections.hero-section');
   const PageContentData = PageContent?.[0] || null;
-  console.log('PageContentData', PageContentData);
   return (
     <article className="container mx-auto px-4 w-full py-6 sm:py-10 space-y-10">
       <section className="">

@@ -40,7 +40,7 @@ export const getHomepageSeo = cache(async () => {
 
 export const getHomepageData = cache(async () => {
     const searchParams = new URLSearchParams()
-    searchParams.append("populate", "*")
+    searchParams.append("populate[PageContent][populate]", "*")
     searchParams.append("filters[slug][$eq]", "home")
     try {
         const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {
@@ -116,7 +116,7 @@ export const getProductSeo = cache(async () => {
 
 export const getProductData = cache(async () => {
     const searchParams = new URLSearchParams()
-    searchParams.append("populate", "*")
+    searchParams.append("populate[PageContent][populate]", "*")
     searchParams.append("filters[slug][$eq]", "catalog")
     try {
         const response = await fetch(`${API_URL}/pages?${searchParams.toString()}`, {

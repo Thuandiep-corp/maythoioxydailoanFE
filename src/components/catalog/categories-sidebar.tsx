@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowRight, Filter } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import {useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 type Props = {
@@ -10,7 +10,6 @@ type Props = {
 
 export function CategorySidebar({ categories }: Props) { 
     const searchParams = useSearchParams()
-    const router = useRouter()
     const activeCategory = searchParams.get("category") || "all"
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     return (
@@ -32,7 +31,7 @@ export function CategorySidebar({ categories }: Props) {
                 count: 100
               }, ...categories].map((cat) => (
                 <li key={cat.slug} onClick={() => {
-                  router.push(`/catalog${cat.slug === 'all' ? '' : `?category=${cat.slug}`}`);
+                  window.history.pushState({}, "", `/catalog${cat.slug === 'all' ? '' : `?category=${cat.slug}`}`);
                 }} className={`w-full flex items-center justify-between p-2 rounded-md text-sm transition-colors cursor-pointer ${
                   (activeCategory === cat.slug)
                     ? "bg-brand-light text-brand-blue font-medium"

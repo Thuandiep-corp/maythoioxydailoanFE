@@ -7,11 +7,7 @@ import Link from 'next/link';
 
 export const revalidate = 3600; 
 
-type Props = {
-  searchParams: Promise<{ [key: string]: string | undefined }>
-}
-
-export default async function HomePage({ searchParams }: Props) {
+export default async function HomePage() {
   const responseCategories = await getProductCategoryList();
   const categories = responseCategories?.data || [];
 
@@ -20,16 +16,13 @@ export default async function HomePage({ searchParams }: Props) {
 
   const productHighlightSection = homePageData?.PageContent?.find((item: any) => item.__component === 'sections.product-highlight');
   const blogHighlightSection = homePageData?.PageContent?.find((item: any) => item.__component === 'sections.blog-highlight');
-  const productListResponse = await getProductList({ page: 1, pageSize: 8 });
-  const bestSellerProducts = productListResponse?.data || [];
-
+  
   return (
     <article className="bg-gray-50 min-h-screen">
-      <Carousel />
+      <Carousel /> 
       <Categories categories={categories} />
       <BestSeller 
         data={productHighlightSection} 
-        products={bestSellerProducts} 
       />
       <section className="bg-slate-50 py-16">
         <div className="container mx-auto px-4 lg:px-8">
