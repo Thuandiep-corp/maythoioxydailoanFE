@@ -1,4 +1,4 @@
-import { getHomepageSeo } from "@/action/pages.action";
+import { getHomepageSeo, getNewsSeo } from "@/action/pages.action";
 import { IMAGE_URL } from "@/const";
 import { Metadata } from "next";
 
@@ -7,13 +7,10 @@ export const revalidate = 3600; // 1 hour
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  const response = await getHomepageSeo();
-  if (!response || !response?.data || response?.data?.length === 0) {
-    return {};
-  }
+  const response = await getNewsSeo();
 
-  const homepageData = response.data[0];
-  const seo = homepageData?.seo || {};
+  const newsPageData = response.data[0];
+  const seo = newsPageData?.seo || {};
 
   const title = seo?.metaTitle || 'Máy Thổi Oxy Đài Loan ';
   const description = seo?.metaDescription || 'Cung cấp máy thổi oxy Đài Loan chính hãng, chất lượng cao với giá tốt. Hỗ trợ tư vấn và dịch vụ sau bán hàng tận tâm cho khách hàng toàn quốc.';
