@@ -1,4 +1,4 @@
-import { getHomepageSeo, getNewsSeo } from "@/action/pages.action";
+import { getNewsSeo } from "@/action/pages.action";
 import { IMAGE_URL } from "@/const";
 import { Metadata } from "next";
 

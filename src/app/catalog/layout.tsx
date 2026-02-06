@@ -1,4 +1,4 @@
-import { getHomepageSeo, getProductSeo } from "@/action/pages.action";
+import { getProductSeo } from "@/action/pages.action";
 import { IMAGE_URL } from "@/const";
 import { Metadata } from "next";
 
