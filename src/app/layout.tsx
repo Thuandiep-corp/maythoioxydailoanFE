@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { Footer, Header, MobileNav } from "@/components";
 
 import "./globals.css";
@@ -32,16 +32,15 @@ export default function RootLayout({
     <html lang="en">
       <head>
       </head>
-      <body suppressHydrationWarning={true}
-        className={`${roboto.className} antialiased flex flex-col items-center`}
-      >
-        
-        <Header />
-        <main className="min-h-screen w-full">
-          {children}
-        </main>
-        <Footer />
-        <MobileNav />
+      <body suppressHydrationWarning={true} className={`${roboto.className} antialiased flex flex-col items-center`} >
+        <Suspense fallback={<></>}>
+          <Header />
+          <main className="min-h-screen w-full">
+            {children}
+          </main>
+          <Footer />
+          <MobileNav />
+        </Suspense>
       </body>
     </html>
   );

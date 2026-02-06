@@ -1,5 +1,5 @@
 import { CategorySidebar, ProductGrid } from "@/components";
-import { getProductCategoryList, getProductList } from "@/action/product.action";
+import { getProductCategoryList } from "@/action/product.action";
 import { getProductData } from '@/action/pages.action';
 export const revalidate = 3600; // 1 hour
 

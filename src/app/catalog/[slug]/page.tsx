@@ -12,7 +12,7 @@ interface PageProps {
 
 export default async function ProductDetailPage(props: PageProps) {
   const params = await props.params;
-  const { category, slug } = params;
+  const { slug } = params;
 
   const product = productList.find((p) => p.slug === slug) ?? productList[0];
 
