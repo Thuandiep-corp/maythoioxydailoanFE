@@ -59,7 +59,7 @@ export function ProductInfo({ product }: Props) {
             </Link>
             <span className="text-slate-300">|</span>
             <div
-              className="flex items-center gap-2 text-slate-500 hover:text-[#408ebd] transition-colors text-sm font-medium cursor-pointer" // Thêm cursor-pointer
+              className="flex items-center gap-2 text-slate-500 hover:text-[#408ebd] transition-colors text-sm font-medium cursor-pointer" 
               onClick={() => {
                 if (typeof window !== "undefined" && navigator.share) {
                   navigator.share({
