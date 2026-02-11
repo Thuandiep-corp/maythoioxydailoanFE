@@ -43,7 +43,7 @@ export function Header() {
              </div>
              <div className="flex items-center gap-2">
                 <Mail size={16} />
-                <span>nguyenthanhdat19741975@gmail.com</span>
+                <Link href="mailto:thanhdat0611@yahoo.com.vn">thanhdat0611@yahoo.com.vn</Link>
              </div>
           </div>
         </div>
