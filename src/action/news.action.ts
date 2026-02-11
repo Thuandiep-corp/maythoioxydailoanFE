@@ -1,55 +1,14 @@
 import { API_TOKEN, API_URL } from "@/const"
 import { cache } from "react"
 
-export const getProductCategoryList = cache(async () => {
-    const searchParams = new URLSearchParams()
-    searchParams.append("populate", "*")
-    searchParams.append("sort", "sort_weight:desc")
-  try {
-    const response = await fetch(`${API_URL}/category-products?${searchParams.toString()}`, {
-        headers: {
-            "Content-Type": "application/json",
-            "authorization": `Bearer ${API_TOKEN}`,
-      },
-    })
-    const data = await response.json()
-    return data
-  } catch (error) {
-      console.error("Error fetching product categories:", error)
-      return null
-  }
-})
-
-export const getProductList = cache(async (params: any = {}) => {
-    const searchParams = new URLSearchParams()
-    searchParams.append("populate", "*")
-    searchParams.append("sort", "sort_weight:desc")
-
-    if (params.categorySlug !== "all") {
-        searchParams.append("filters[category_product][slug][$eq]", params.categorySlug)
-  }
-  
-  try {
-    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
-        headers: {
-            "Content-Type": "application/json",
-            "authorization": `Bearer ${API_TOKEN}`,
-      },
-    })
-    const data = await response.json()
-    return data
-  } catch (error) {
-      console.error("Error fetching product categories:", error)
-      return null
-  }
-})
-
-export const getProductDetail = cache(async (slug: string) => {
+export const getNews = cache(async ({ blogType }: { blogType: string }) => {
   const searchParams = new URLSearchParams()
   searchParams.append("populate", "*")
-  searchParams.append("filters[slug][$eq]", slug) 
+  searchParams.append("sort", "sort_weight:desc")
+  searchParams.append("filters[category_articles][slug][$eq]", blogType)
+  searchParams.append("pagination[pageSize]", "1000")
   try {
-    const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
+    const response = await fetch(`${API_URL}/articles?${searchParams.toString()}`, {
         headers: {
             "Content-Type": "application/json",
             "authorization": `Bearer ${API_TOKEN}`,
@@ -57,8 +16,46 @@ export const getProductDetail = cache(async (slug: string) => {
     })
     const data = await response.json()
     return data
-  }   catch (error) {             
-      console.error("Error fetching product by slug:", error)
+  } catch (error) {
+      console.error("Error fetching product categories:", error)
+      return null
+  }
+})
+
+export const getNewsCategory = cache(async () => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate", "*")
+    searchParams.append("sort", "sort_weight:desc")
+  try {
+    const response = await fetch(`${API_URL}/category-articles?${searchParams.toString()}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "authorization": `Bearer ${API_TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+      console.error("Error fetching product categories:", error)
+      return null
+  }
+})
+
+export const getVideo = cache(async () => {
+    const searchParams = new URLSearchParams()
+    searchParams.append("populate", "*")
+    searchParams.append("sort", "sort_weight:desc")
+  try {
+    const response = await fetch(`${API_URL}/videos?${searchParams.toString()}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "authorization": `Bearer ${API_TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+      console.error("Error fetching product categories:", error)
       return null
   }
 })

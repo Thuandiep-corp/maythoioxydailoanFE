@@ -1,21 +1,18 @@
 import Link from 'next/link';
-import { productList } from '@/moocs/catalog';
-import { ProductCard, ProductGallery, ProductInfo } from '@/components';
-import { ArrowRight } from 'lucide-react';
+import { ProductInfo } from '@/components';
+import { getProductDetail } from '@/action/product.action';
+import { IMAGE_URL } from '@/const';
 
 interface PageProps {
   params: Promise<{
-    category: string;
     slug: string;
   }>
 }
 
-export default async function ProductDetailPage(props: PageProps) {
-  const params = await props.params;
-  const { category, slug } = params;
-
-  const product = productList.find((p) => p.slug === slug) ?? productList[0];
-
+export default async function ProductDetailPage({ params}: PageProps) {
+  const { slug } = await params;
+  const responseProduct = await getProductDetail(slug)
+  const product = responseProduct?.data?.[0]
   if (!product) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-gray-50">
@@ -25,20 +22,16 @@ export default async function ProductDetailPage(props: PageProps) {
         </p>
         <Link 
           href="/" 
-          className="px-6 py-2 bg-[#408ebd] text-white rounded-lg hover:bg-[#357abd] transition-colors"
+          className="px-6 py-2 bg-[#000203] text-white rounded-lg hover:bg-[#357abd] transition-colors"
         >
           Quay về trang chủ
         </Link>
       </div>
     );
   }
-
-  const productImages = product.images || (product.images ? [product.images] : ["/logo.png"]);
-
   return (
     <article className="min-h-screen bg-white pb-20 pt-5">
-      <div className="container mx-auto px-4 lg:px-8">
-        
+      <section className="container mx-auto px-4 lg:px-8">
         <section className="flex items-center gap-2 mb-8 text-sm font-medium overflow-x-auto whitespace-nowrap">
           <Link className="text-gray-500 hover:text-[#408ebd] transition-colors" href="/">
             Trang chủ
@@ -52,31 +45,35 @@ export default async function ProductDetailPage(props: PageProps) {
             {product.name}
           </span>
         </section>
-
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            <aside className="lg:col-span-5">
-               <ProductGallery images={productImages} />
-            </aside>
-            <div className="lg:col-span-7">
-               <ProductInfo product={product} />
+          <aside className="lg:col-span-5">
+            <div className="aspect-4/3 bg-white rounded-2xl border border-slate-100 overflow-hidden relative group">
+              <div
+                className="w-full h-full bg-center bg-cover bg-no-repeat transition-all duration-500"
+                style={{ backgroundImage: `url('${product?.image?.url ? IMAGE_URL + product?.image?.url : '/logo.png'}')` }}
+              />
             </div>
+          </aside>
+          <div className="lg:col-span-7">
+              <ProductInfo product={product} />
+          </div>
         </section>
-      <section className="mt-16 pt-16 border-t border-slate-200">
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl font-bold text-slate-900">Sản phẩm tương tự</h2>
-        <Link href={`/catalog`} className="text-sm font-medium text-[#408ebd] hover:underline flex items-center gap-1">
-          Xem tất cả <ArrowRight size={16} />
-        </Link>
-      </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            { 
-              productList
-                .slice(0, 4)
-                .map((item, index) => <ProductCard key={'related-product-'+ item.id + '-' + index} data={item} />)
-            }
-      </div>
-    </section>
-      </div>
+        {/* <section className="mt-16 pt-16 border-t border-slate-200">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-slate-900">Sản phẩm tương tự</h2>
+            <Link href={`/catalog`} className="text-sm font-medium text-[#408ebd] hover:underline flex items-center gap-1">
+              Xem tất cả <ArrowRight size={16} />
+            </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              { 
+                productList
+                  .slice(0, 4)
+                  .map((item, index) => <ProductCard key={'related-product-'+ item.id + '-' + index} data={item} />)
+              }
+            </div>
+        </section> */}
+      </section>
     </article>
   );
 }
