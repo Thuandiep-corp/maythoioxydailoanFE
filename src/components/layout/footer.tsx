@@ -16,13 +16,13 @@ export function Footer() {
             <div className="flex items-start gap-3">
               <MapPin className="shrink-0 text-[#408ebd] mt-1" size={18} />
               <Link href='https://maps.app.goo.gl/kLt7PksZQDgrd4ab6' className="hover:text-white transition-colors">
-                995 Quốc Lộ 1A, Phường Bình Hưng Hòa, Quận Bình Tân, TP. Hồ Chí Minh
+                105 Ao Đôi, Phường Bình Trị Đông, TPHCM
               </Link>
             </div>
             <div className="flex items-center gap-3">
               <Mail className="shrink-0 text-[#408ebd]" size={18} />
-              <Link href="mailto:nguyenthanhdat19741975@gmail.com" className="hover:text-white transition-colors">
-                nguyenthanhdat19741975@gmail.com
+              <Link href="mailto:thanhdat0611@yahoo.com.vn" className="hover:text-white transition-colors">
+                thanhdat0611@yahoo.com.vn
               </Link>
             </div>
             <div className="flex items-center gap-3">
@@ -57,7 +57,7 @@ export function Footer() {
                <p className="text-xs uppercase font-semibold text-gray-400">Hotline tư vấn 24/7</p>
                <Link href="tel:0938542969" className="flex items-center gap-2 text-2xl font-bold text-white mt-1 hover:text-white transition-colors">
                   <Phone size={24} className="animate-pulse" />
-                  0938 542 969
+                  090 3652738
                </Link>
             </div>
           </div>
@@ -83,7 +83,7 @@ export function Footer() {
       </div>
       <div className="bg-slate-950 py-4 border-t border-slate-800">
         <div className="container mx-auto px-4 text-center text-xs text-slate-500">
-           © 2025 Máy thổi khí Thành Đạt. All rights reserved. Developed by Thuan Diep Corp.
+           © 2026 Máy thổi khí Thành Đạt. All rights reserved. Developed by Thuan Diep Corp.
         </div>
       </div>
     </footer>
