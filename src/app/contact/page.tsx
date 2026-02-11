@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronRight, Clock, Headset, Mail, MapPin, Phone, Send } from "lucide-react";
+import { ChevronDown, ChevronRight, Clock, Headset, Landmark, Mail, MapPin, Phone, Send } from "lucide-react";
 import Link from "next/link";
 
 export default function Page() {
@@ -6,7 +6,7 @@ export default function Page() {
         <article className="container mx-auto px-4 w-full py-6 sm:py-10">
             <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <aside className="lg:col-span-5 bg-white rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-slate-100 overflow-hidden">
-                    <div className="p-8 space-y-8">
+                    <div className="p-8 space-y-6.5">
                     <div className="flex gap-4">
                         <div className="w-10 h-10 rounded-full bg-[#eff6ff] flex items-center justify-center shrink-0">
                         <Phone className="w-5 h-5 text-[#3b82f6]" />
@@ -16,8 +16,7 @@ export default function Page() {
                             Hotline Kinh Doanh
                         </h3>
                         <div className="text-slate-900 font-semibold text-base leading-tight">
-                            <p>0938 542 969</p>
-                            <p>0938 542 969</p>
+                            <p>093 8542969</p>
                         </div>
                         </div>
                     </div>
@@ -30,7 +29,7 @@ export default function Page() {
                         <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
                             Hotline Kỹ Thuật
                         </h3>
-                        <p className="text-slate-900 font-semibold text-base">0903 345 678</p>
+                        <p className="text-slate-900 font-semibold text-base">090 3652738</p>
                         </div>
                     </div>
                     <hr className="border-slate-100" />
@@ -41,8 +40,20 @@ export default function Page() {
                         <div>
                         <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Email Hỗ Trợ</h3>
                         <div className="text-slate-900 font-semibold text-base leading-tight">
-                            <p>nguyenthanhdat19741975@gmail.com</p>
-                            <p>nguyenthanhdat19741975@gmail.com</p>
+                            <p>thanhdat0611@yahoo.com.vn</p>
+                        </div>
+                        </div>
+                        </div>
+                        <hr className="border-slate-100" />
+                    <div className="flex gap-4">
+                        <div className="w-10 h-10 rounded-full bg-[#eff6ff] flex items-center justify-center shrink-0">
+                                <Landmark className="w-5 h-5 text-[#3b82f6]" />
+                        </div>
+                        <div>
+                        <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Thanh toán</h3>
+                        <div className="text-slate-900 font-semibold text-base leading-tight">
+                            <p>Ngân hàng TMCP Á Châu</p>
+                            <p>652738 - Nguyễn Thành Sướng</p>
                         </div>
                         </div>
                     </div>
@@ -74,10 +85,10 @@ export default function Page() {
                             Địa Chỉ Văn Phòng
                         </h3>
                         <p className="text-slate-900 font-semibold leading-relaxed text-[15px]">
-                            995 Quốc Lộ 1A, Phường Bình Hưng Hòa, Quận Bình Tân, TP. Hồ Chí Minh
+                            105 Ao Đôi, Phường Bình Trị Đông, TPHCM
                         </p>
                         <Link
-                            href="https://maps.app.goo.gl/kLt7PksZQDgrd4ab6"
+                            href="https://maps.app.goo.gl/bzTg5Y12vnCeQPHw7"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center text-sm font-bold text-[#3b82f6] hover:text-[#2563eb] group transition-colors"

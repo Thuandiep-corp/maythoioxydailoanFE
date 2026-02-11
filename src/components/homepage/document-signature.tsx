@@ -16,17 +16,17 @@ export function DocumentSignature({ data }: Props) {
     const blogs = data?.blogs || []
     if (blogs?.length === 0) return <></>
     return (
-              <section className="bg-slate-50 py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-            <div>
-              <p className="text-[10px] font-bold tracking-widest text-blue-600 uppercase">
-                {subTitle}
-              </p>
-              <h2 className="mt-1 text-2xl font-bold text-slate-900">
-                {title}
-              </h2>
-            </div>
+     <section className="py-8 pt-6 pb-8 bg-white">
+       <div className="container mx-auto px-4 lg:px-8">
+         <div className="text-center mb-10">
+             <span className="text-[13px] font-bold tracking-widest text-blue-500 uppercase underline">
+               {subTitle}
+             </span>
+             <h2 className="mt-2 text-3xl font-bold text-slate-900">
+               {title}
+             </h2>
+          </div>
+          <div className="flex justify-end mb-6">
             <Link
               href="/news/documents"
               className="hidden sm:flex items-center gap-1 text-sm font-semibold text-[#408ebd] hover:opacity-80 transition-colors"
