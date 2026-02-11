@@ -45,14 +45,14 @@ export const getProductList = cache(async (params: any = {}) => {
 })
 
 export const getProductDetail = cache(async (slug: string) => {
-    const searchParams = new URLSearchParams()
-    searchParams.append("populate", "*")
-    searchParams.append("filters[slug][$eq]", slug) 
+  const searchParams = new URLSearchParams()
+  searchParams.append("populate", "*")
+  searchParams.append("filters[slug][$eq]", slug) 
   try {
     const response = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
         headers: {
             "Content-Type": "application/json",
-            " authorization": `Bearer ${API_TOKEN}`,
+            "authorization": `Bearer ${API_TOKEN}`,
       },
     })
     const data = await response.json()

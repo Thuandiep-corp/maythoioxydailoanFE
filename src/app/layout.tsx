@@ -33,7 +33,7 @@ export default function RootLayout({
       <head>
       </head>
       <body suppressHydrationWarning={true} className={`${roboto.className} antialiased flex flex-col items-center`} >
-        <Suspense fallback={<></>}>
+        <Suspense fallback={ <></>}>
           <Header />
           <main className="min-h-screen w-full">
             {children}

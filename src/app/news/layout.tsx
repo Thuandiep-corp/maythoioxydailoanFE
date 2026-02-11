@@ -3,13 +3,12 @@ import { IMAGE_URL } from "@/const";
 import { Metadata } from "next";
 
 
-export const revalidate = 3600; // 1 hour
+// export const revalidate = 3600; // 1 hour
 
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await getNewsSeo();
-
-  const newsPageData = response.data[0];
+  const newsPageData = response?.data?.[0];
   const seo = newsPageData?.seo || {};
 
   const title = seo?.metaTitle || 'Máy Thổi Oxy Đài Loan ';

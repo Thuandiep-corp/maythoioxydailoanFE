@@ -8,7 +8,7 @@ export const revalidate = 3600; // 1 hour
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await getContactSeo();
-  const contactPageData = response.data[0];
+  const contactPageData = response?.data?.[0];
   const seo = contactPageData?.seo || {};
   const title = seo?.metaTitle || 'Máy Thổi Oxy Đài Loan ';
   const description = seo?.metaDescription || 'Cung cấp máy thổi oxy Đài Loan chính hãng, chất lượng cao với giá tốt. Hỗ trợ tư vấn và dịch vụ sau bán hàng tận tâm cho khách hàng toàn quốc.';

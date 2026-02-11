@@ -33,7 +33,7 @@ export function ProductCard({ data, imgAtributes }: Props) {
             </Link>
             <div className="flex flex-1 flex-col justify-between select-none">
                 <div className="mt-4 flex items-center justify-between border-t border-slate-50 pt-3">
-                    <p className="text-sm font-semibold text-blue-500">Liên hệ</p>
+                    <Link  href='/contact' className="text-sm font-semibold text-blue-500">Liên hệ</Link>
                 </div>
             </div>
         </section>

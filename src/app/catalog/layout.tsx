@@ -6,7 +6,7 @@ export const revalidate = 3600; // 1 hour
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await getProductSeo();
-  const productPageData = response.data[0];
+  const productPageData = response?.data?.[0];
   const seo = productPageData?.seo || {};
 
   const title = seo?.metaTitle || 'Máy Thổi Oxy Đài Loan ';

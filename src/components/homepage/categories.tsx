@@ -1,15 +1,24 @@
-import { getProductCategoryList } from "@/action/product.action";
 import { IMAGE_URL } from "@/const";
 import Image from "next/image";
 import Link from "next/link";
+interface Props {
+  data?: {
+    categories?: string;
+    title?: string;
+    category_products: any[];
+  }
+}
 
-export async function Categories({ categories }: any) { 
-  
+export async function Categories({ data }: Props) { 
+  const title = data?.title || "Giải pháp cho mọi nhu cầu"
+  const subTitle = data?.categories || 'DANH MỤC SẢN PHẨM'
+  const categories = data?.category_products || []
+  if (categories?.length === 0) return <></>
   return (
     <section className="bg-slate-50 py-16">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <span className="text-[10px] font-bold tracking-widest text-blue-600 uppercase">DANH MỤC SẢN PHẨM</span>
-          <h2 className="mt-2 text-3xl font-bold text-slate-900">Giải pháp cho mọi nhu cầu</h2>
+          <span className="text-[10px] font-bold tracking-widest text-blue-600 uppercase">{subTitle}</span>
+        <h2 className="mt-2 text-3xl font-bold text-slate-900">{title}</h2>
 
           <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {categories.map((cat: any) => {

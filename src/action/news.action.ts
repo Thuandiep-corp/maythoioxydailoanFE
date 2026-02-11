@@ -1,10 +1,12 @@
 import { API_TOKEN, API_URL } from "@/const"
 import { cache } from "react"
 
-export const getNews = cache(async () => {
-    const searchParams = new URLSearchParams()
-    searchParams.append("populate", "*")
-    searchParams.append("sort", "sort_weight:desc")
+export const getNews = cache(async ({ blogType }: { blogType: string }) => {
+  const searchParams = new URLSearchParams()
+  searchParams.append("populate", "*")
+  searchParams.append("sort", "sort_weight:desc")
+  searchParams.append("filters[category_articles][slug][$eq]", blogType)
+  searchParams.append("pagination[pageSize]", "1000")
   try {
     const response = await fetch(`${API_URL}/articles?${searchParams.toString()}`, {
         headers: {

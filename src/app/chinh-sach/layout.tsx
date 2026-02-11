@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {};
   }
 
-  const homepageData = response.data[0];
+  const homepageData = response?.data?.[0];
   const seo = homepageData?.seo || {};
 
   const title = seo?.metaTitle || 'Máy Thổi Oxy Đài Loan ';
