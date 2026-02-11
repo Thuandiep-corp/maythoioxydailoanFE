@@ -20,7 +20,7 @@ export function NewsSignature({ newsData, videoData }: Props) {
     const video = videoData?.videos?.[0]
     
     return(
-        <section className="pt-8 pb-16 w-full bg-white">
+        <section className="pt-8 pb-18 w-full bg-white">
             <section className="container mx-auto px-4 lg:px-8">
                 <div className="text-center mb-8">
                     <span className="text-[13px] font-bold tracking-widest text-blue-500 uppercase underline block mb-2">

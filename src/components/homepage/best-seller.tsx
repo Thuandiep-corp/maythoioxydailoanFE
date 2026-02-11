@@ -16,7 +16,7 @@ export function BestSeller({ data }: BestSellerProps) {
   const products = data?.products || [];
 
   return (
-     <section className="py-10 pt-6 pb-16 bg-white">
+     <section className="py-8 pt-6 pb-8 bg-white">
        <div className="container mx-auto px-4 lg:px-8">
          <div className="text-center mb-10">
              <span className="text-[13px] font-bold tracking-widest text-blue-500 uppercase underline">

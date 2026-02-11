@@ -18,7 +18,7 @@ export async function Categories({ data }: Props) {
   if (categories?.length === 0) return <></>
 
   return (
-    <section className="bg-slate-50 pt-6 pb-16 ">
+    <section className="bg-slate-50 pt-6 pb-8 ">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <span className="text-[13px] font-bold tracking-widest text-blue-500 uppercase underline">
             {subTitle}
